@@ -483,7 +483,7 @@ $border-widths: (
   2: 2px,
   3: 3px,
   4: 4px,
-  5: 5px
+  5: 10px
 ) !default;
 
 $border-style:                solid !default;
@@ -1232,8 +1232,8 @@ $placeholder-opacity-min:           .2 !default;
 // Cards
 
 // scss-docs-start card-variables
-$card-spacer-y:                     $spacer !default;
-$card-spacer-x:                     $spacer !default;
+$card-spacer-y:                     0 !default;
+$card-spacer-x:                     $spacer * .5 !default;
 $card-title-spacer-y:               $spacer * .5 !default;
 $card-border-width:                 $border-width !default;
 $card-border-color:                 var(--#{$prefix}border-color-translucent) !default;
@@ -1241,14 +1241,14 @@ $card-border-radius:                $border-radius !default;
 $card-box-shadow:                   null !default;
 $card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
 $card-cap-padding-y:                $card-spacer-y * .5 !default;
-$card-cap-padding-x:                $card-spacer-x !default;
+$card-cap-padding-x:                0 !default;
 $card-cap-bg:                       rgba($black, .03) !default;
 $card-cap-color:                    null !default;
 $card-height:                       null !default;
 $card-color:                        null !default;
 $card-bg:                           $white !default;
 $card-img-overlay-padding:          $spacer !default;
-$card-group-margin:                 $grid-gutter-width * .5 !default;
+$card-group-margin:                 0 !default;
 // scss-docs-end card-variables
 
 // Accordion
