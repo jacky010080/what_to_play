@@ -122,9 +122,7 @@
             </div>
           </div>
         </div>
-        <button type="button" class="btn btn-primary rounded-pill text-white text-center w-25 mt-4">
-          查看更多
-        </button>
+        <router-link to="/products" class="btn btn-primary rounded-pill text-white text-center w-25 mt-4">查看更多</router-link>
       </div>
     </div>
   </div>
@@ -134,9 +132,7 @@
     <div class="fs-6 text-center position-absolute top-50 start-50 translate-middle" style="width: 45%; margin-left: 100px;">
       <p>我們的網站提供一個容易操作的介面，讓瀏覽和購買玩具成為有趣和愉快的體驗。我們還提供詳細的產品描述和高品質的圖片，幫助您做出明智的購買選擇。
       </p>
-      <button type="button" class="btn btn-primary rounded-pill text-white">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;了解更多&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      </button>
+      <router-link to="/about" class="btn btn-primary rounded-pill text-white text-center w-25">了解更多</router-link>
     </div>
   </div>
 </template>

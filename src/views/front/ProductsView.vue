@@ -52,7 +52,6 @@
 
 <script>
 import PaginationView from '../../components/PaginationView.vue'
-import { RouterLink } from 'vue-router'
 import Swal from 'sweetalert2'
 const { VITE_API, VITE_APIPATH } = import.meta.env
 
@@ -64,7 +63,6 @@ export default {
     }
   },
   components: {
-    RouterLink,
     PaginationView
   },
   methods: {

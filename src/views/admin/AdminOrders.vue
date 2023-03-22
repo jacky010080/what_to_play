@@ -119,7 +119,6 @@ export default {
       this.isLoading = true
       this.$http.put(url, { data: paid })
         .then(res => {
-          alert(res.data.message)
           this.isLoading = false
           this.getOrders(this.currentPage)
           this.$refs.orderModal.modal.hide()
