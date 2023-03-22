@@ -24,7 +24,7 @@ git commit -m 'deploy'
 # git push -f git@github.com:jacky010080/jacky010080.github.io.git master
 
 # 部署到 https://github.com/jacky010080/hexschool_Vue3_week7
-git push -f https://github.com/jacky010080/hexschool_Vue3_week7.git main:gh-pages
-# git push -f git@github.com:jacky010080/hexschool_Vue3_week7.git main:gh-pages
+git push -f https://github.com/jacky010080/what_to_play.git main:gh-pages
+# git push -f git@github.com:jacky010080/what_to_play.git main:gh-pages
 
 cd -

@@ -1,16 +1,16 @@
 <template>
-  <router-link to="/">Home</router-link> |
+  <!-- <router-link to="/">Home</router-link> |
   <router-link to="/about">About</router-link> |
   <router-link to="/products">產品列表</router-link> |
   <router-link to="/cart">購物車</router-link> |
   <router-link to="/admin" class="btn btn-primary btn-sm">登入後台</router-link>
-  <hr>
+  <hr> -->
   <!-- navbar -->
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-10">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <router-link to="/"><img src="../../public/image/logo 1.png" class="h-100" alt="logo"></router-link>
+          <router-link to="/"><img src="../../public/image/logo1.png" class="h-100" alt="logo"></router-link>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <router-link to="/products" class="nav-item nav-link me-4 active">商品列表</router-link>
@@ -30,7 +30,7 @@
       <div class="row justify-content-center">
         <div class="col-10 d-flex justify-content-between">
           <div class="d-flex align-items-start">
-        <a class="text-white h4" href=""><img src="../../../public/image/logo 2.png" class="h-100" alt="logo"></a>
+        <a class="text-white h4" href=""><img src="../../public/image/logo2.png" class="h-100" alt="logo"></a>
           </div>
           <ul class="list-unstyled text-white mb-1">
               <li class="mb-2 fs-6">商品列表</li>
@@ -45,9 +45,9 @@
           </ul>
           <div class="d-flex flex-column align-items-end justify-content-between text-white">
             <ul class="d-flex list-unstyled mb-0 h4">
-              <li><a href="#" class="text-white mx-3"><img src="../../../public/image/fb.png" alt="facebook" class="bg-white rounded-circle border border-5"></a></li>
-              <li><a href="#" class="text-white mx-3"><img src="../../../public/image/linkedin.svg" alt=""></a></li>
-              <li><a href="#" class="text-white ms-3"><img src="../../../public/image/ig.png" alt="instagram" class="bg-white rounded-circle border border-5"></a></li>
+              <li><a href="#" class="text-white mx-3"><img src="../../public/image/fb.png" alt="facebook" class="bg-white rounded-circle border border-5"></a></li>
+              <li><a href="#" class="text-white mx-3"><img src="../../public/image/linkedin.svg" alt=""></a></li>
+              <li><a href="#" class="text-white ms-3"><img src="../../public/image/ig.png" alt="instagram" class="bg-white rounded-circle border border-5"></a></li>
             </ul>
             <div class="d-flex flex-column align-items-end">
               <p class="mb-0">Copyright©  2023 盒玩，何玩？</p>
