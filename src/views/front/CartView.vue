@@ -2,6 +2,7 @@
   <!-- cart template -->
   <div class="container">
     <div class="mt-3">
+      <button type="button" class="btn btn-outline-warning" @click="deleteAllProduct()">清空購物車</button>
       <h3 class="mt-3 mb-4">購物車</h3>
       <div class="row">
         <div class="col-md-8">
@@ -65,6 +66,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 const { VITE_API, VITE_APIPATH } = import.meta.env
 
 export default {
@@ -92,7 +94,12 @@ export default {
           this.cart = res.data.data
         })
         .catch(err => {
-          alert(err.response.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
         })
     },
     updateProductQty (item) {
@@ -103,35 +110,62 @@ export default {
       this.loadingItem = item.id
       this.$http.put(`${VITE_API}/v2/api/${VITE_APIPATH}/cart/${item.id}`, { data })
         .then(res => {
-          alert(res.data.message)
           this.getCart()
           this.loadingItem = ''
+          Swal.fire({
+            icon: 'success',
+            title: res.data.message,
+            confirmButtonText: 'OK'
+          })
         })
         .catch(err => {
-          alert(err.response.data.message)
           this.loadingItem = ''
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
         })
     },
     deleteProduct (item) {
       this.loadingItem = item.id
       this.$http.delete(`${VITE_API}/v2/api/${VITE_APIPATH}/cart/${item.id}`)
         .then(res => {
-          alert(res.data.message)
           this.getCart()
           this.loadingItem = ''
+          Swal.fire({
+            icon: 'success',
+            title: res.data.message,
+            confirmButtonText: 'OK'
+          })
         })
         .catch(err => {
-          alert(err.response.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
         })
     },
     deleteAllProduct () {
       this.$http.delete(`${VITE_API}/v2/api/${VITE_APIPATH}/carts`)
         .then(res => {
-          alert(res.data.message)
           this.getCart()
+          Swal.fire({
+            icon: 'success',
+            title: res.data.message,
+            confirmButtonText: 'OK'
+          })
         })
         .catch(err => {
-          alert(err.response.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
         })
     }
   },

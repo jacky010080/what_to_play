@@ -112,6 +112,7 @@
 
 <script>
 import { RouterLink } from 'vue-router'
+import Swal from 'sweetalert2'
 const { VITE_API, VITE_APIPATH } = import.meta.env
 
 export default {
@@ -130,7 +131,12 @@ export default {
           this.products = res.data.products
         })
         .catch(err => {
-          alert(err.response.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
         })
     },
     addToCart (id) {
@@ -140,11 +146,19 @@ export default {
       }
       this.$http.post(`${VITE_API}/v2/api/${VITE_APIPATH}/cart`, { data })
         .then(res => {
-          alert(res.data.message)
-          console.log(res)
+          Swal.fire({
+            icon: 'success',
+            title: res.data.message,
+            confirmButtonText: 'OK'
+          })
         })
         .catch(err => {
-          alert(err.response.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
         })
     }
   },

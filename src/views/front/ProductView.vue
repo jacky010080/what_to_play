@@ -38,24 +38,26 @@
               </div>
             </div>
             <div class="col-6">
-              <a href="./checkout.html" class="text-nowrap btn btn-dark w-100 py-2">Lorem ipsum</a>
+              <button type="button" class="btn btn-primary w-100 py-2 text-nowrap" @click="addToCart(product.id)">加入購物車</button>
             </div>
           </div>
         </div>
       </div>
       <div class="row my-5">
         <div class="col-md-4">
-          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+          <p>{{ product.description }}</p>
         </div>
         <div class="col-md-3">
-          <p class="text-muted">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</p>
+          <p class="text-muted">{{ product.content }}</p>
         </div>
       </div>
     </div>
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 const { VITE_API, VITE_APIPATH } = import.meta.env
+
 export default {
   data () {
     return {
@@ -70,7 +72,34 @@ export default {
           this.product = res.data.product
         })
         .catch(err => {
-          alert(err.response.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
+        })
+    },
+    addToCart (id) {
+      const data = {
+        product_id: id,
+        qty: 1
+      }
+      this.$http.post(`${VITE_API}/v2/api/${VITE_APIPATH}/cart`, { data })
+        .then(res => {
+          Swal.fire({
+            icon: 'success',
+            title: res.data.message,
+            confirmButtonText: 'OK'
+          })
+        })
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
         })
     }
   },
