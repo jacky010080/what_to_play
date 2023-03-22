@@ -1,51 +1,67 @@
 <template>
-  這是購物車頁面
-  <table class="table align-middle">
-    <thead>
-      <tr>
-        <th></th>
-        <th>品名</th>
-        <th style="width: 150px">數量/單位</th>
-        <th>單價</th>
-      </tr>
-    </thead>
-    <tbody>
-        <template v-if="cart.carts">
-          <tr v-for="item in cart.carts" :key="item.id">
-              <td>
-                  <button type="button" class="btn btn-outline-danger btn-sm" @click="deleteProduct(item)" :disabled="item.id === loadingItem">
-                      <i class="fas fa-spinner fa-pulse"></i>
-                      x
-                  </button>
-              </td>
-              <td>
-                  {{ item.product.title }}
-              </td>
-              <td>
-                  <div class="input-group input-group-sm">
-                    <select name="" id="" class="form-control" v-model="item.qty" @change="updateProductQty(item)" :disabled="item.id === loadingItem">
-                      <option :value="i" v-for="i in 20" :key="'cart' + i">{{ i }}</option>
-                    </select>
-                  </div>
-              </td>
-              <td class="text-end">
-                  <!-- <small class="text-success">折扣價：</small> -->
-                  {{ item.total }}
-              </td>
-          </tr>
-        </template>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="3" class="text-end">總計</td>
-        <td class="text-end">{{ cart.total }}</td>
-      </tr>
-      <tr>
-        <td colspan="3" class="text-end text-success">折扣價</td>
-        <td class="text-end text-success">{{ cart.final_total }}</td>
-      </tr>
-    </tfoot>
-  </table>
+  <!-- cart template -->
+  <div class="container">
+    <div class="mt-3">
+      <h3 class="mt-3 mb-4">購物車</h3>
+      <div class="row">
+        <div class="col-md-8">
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th scope="col" class="border-0 ps-0">品名</th>
+                <th scope="col" class="border-0">數量</th>
+                <th scope="col" class="border-0">單價</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template v-if="cart.carts">
+                <tr v-for="item in cart.carts" :key="item.id" class="border-bottom border-top">
+                  <td class="border-0 align-middle">
+                      <button type="button" class="btn btn-outline-danger btn-sm" @click="deleteProduct(item)" :disabled="item.id === loadingItem">
+                          <i class="fas fa-spinner fa-pulse"></i>
+                          x
+                      </button>
+                  </td>
+                  <td scope="row" class="border-0 px-0 font-weight-normal py-4">
+                    <img :src="item.product.imageUrl" alt="" style="width: 72px; height: 72px; object-fit: cover;">
+                    <p class="mb-0 fw-bold ms-3 d-inline-block">{{ item.product.title }}</p>
+                  </td>
+                  <td class="border-0 align-middle">
+                    <div class="input-group input-group-sm">
+                      <select name="" id="" class="form-control" v-model="item.qty" @change="updateProductQty(item)" :disabled="item.id === loadingItem">
+                        <option :value="i" v-for="i in 20" :key="'cart' + i">{{ i }}</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="border-0 align-middle"><p class="mb-0 ms-auto">NT${{ item.total }}</p></td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+        <!-- Order Detail -->
+        <div class="col-md-4">
+          <div class="border p-4 mb-4">
+            <h4 class="fw-bold mb-4">Order Detail</h4>
+            <table class="table text-muted border-bottom">
+              <tbody>
+                <tr>
+                  <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">Subtotal</th>
+                  <td class="text-end border-0 px-0 pt-4">NT${{ cart.total }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="d-flex justify-content-between mt-4">
+              <p class="mb-0 h4 fw-bold">Total</p>
+              <p class="mb-0 h4 fw-bold">NT${{ cart.total }}</p>
+            </div>
+            <a href="#" class="btn btn-primary w-100 mt-4">購買</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
