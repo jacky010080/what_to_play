@@ -19,7 +19,7 @@
               <template v-if="cart.carts">
                 <tr v-for="item in cart.carts" :key="item.id" class="border-bottom border-top">
                   <td class="border-0 align-middle">
-                      <button type="button" class="btn btn-outline-danger btn-sm" @click="deleteProduct(item)" :disabled="item.id === loadingItem">
+                      <button type="button" class="btn btn-outline-warning btn-sm" @click="deleteProduct(item)" :disabled="item.id === loadingItem">
                           <i class="fas fa-spinner fa-pulse"></i>
                           x
                       </button>
@@ -57,7 +57,7 @@
               <p class="mb-0 h4 fw-bold">Total</p>
               <p class="mb-0 h4 fw-bold">NT${{ cart.total }}</p>
             </div>
-            <a href="#" class="btn btn-primary w-100 mt-4">購買</a>
+            <router-link to="/checkout" class="btn btn-primary w-100 mt-4">確認購買</router-link>
           </div>
         </div>
       </div>
@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import { RouterLink } from 'vue-router'
 import Swal from 'sweetalert2'
 const { VITE_API, VITE_APIPATH } = import.meta.env
 
@@ -75,17 +76,11 @@ export default {
       products: [],
       productId: '',
       cart: {},
-      loadingItem: '',
-      form: {
-        user: {
-          name: '',
-          email: '',
-          tel: '',
-          address: ''
-        },
-        message: ''
-      }
+      loadingItem: ''
     }
+  },
+  components: {
+    RouterLink
   },
   methods: {
     getCart () {

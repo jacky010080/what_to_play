@@ -30,6 +30,10 @@ const routes = [
       {
         path: 'login',
         component: () => import('../views/front/LoginView.vue')
+      },
+      {
+        path: 'checkout',
+        component: () => import('../views/front/CheckoutView.vue')
       }
     ]
   },
