@@ -36,7 +36,7 @@
               <li class="mb-2 fs-6">商品列表</li>
               <li class="mb-2">文章介紹</li>
               <li class="mb-2">關於我們</li>
-              <li class="mb-2">後台登入</li>
+              <li class="mb-2"><router-link to="/admin">後台登入</router-link></li>
           </ul>
           <ul class="list-unstyled text-white mb-1">
               <li class="mb-2">聯絡我們</li>
