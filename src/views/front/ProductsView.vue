@@ -7,7 +7,7 @@
               <div class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0" id="headingOne" data-bs-toggle="collapse" data-bs-target="#collapseOne">
                 <div class="d-flex justify-content-between align-items-center pe-1">
                   <h4 class="mb-0">
-                    Lorem ipsum
+                    商品分類
                   </h4>
                   <i class="fas fa-chevron-down"></i>
                 </div>
@@ -15,53 +15,9 @@
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="card-body py-0">
                   <ul class="list-unstyled">
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card border-0">
-              <div class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0" id="headingTwo" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                <div class="d-flex justify-content-between align-items-center pe-1">
-                  <h4 class="mb-0">
-                    Lorem ipsum
-                  </h4>
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-              </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                <div class="card-body py-0">
-                  <ul class="list-unstyled">
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card border-0">
-              <div class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0" id="headingThree" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                <div class="d-flex justify-content-between align-items-center pe-1">
-                  <h4 class="mb-0">
-                    Lorem ipsum
-                  </h4>
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-              </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                <div class="card-body py-0">
-                  <ul class="list-unstyled">
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">Lorem ipsum</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">盒玩</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">扭蛋</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted">模型</a></li>
                   </ul>
                 </div>
               </div>
@@ -88,29 +44,14 @@
             </div>
           </div>
           <!-- pagination -->
-          <nav class="d-flex justify-content-center">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <PaginationView :pages="page" @emit-page="getProducts" class="d-flex justify-content-center"></PaginationView>
         </div>
       </div>
     </div>
 </template>
 
 <script>
+import PaginationView from '../../components/PaginationView.vue'
 import { RouterLink } from 'vue-router'
 import Swal from 'sweetalert2'
 const { VITE_API, VITE_APIPATH } = import.meta.env
@@ -118,17 +59,20 @@ const { VITE_API, VITE_APIPATH } = import.meta.env
 export default {
   data () {
     return {
-      products: []
+      products: [],
+      page: {}
     }
   },
   components: {
-    RouterLink
+    RouterLink,
+    PaginationView
   },
   methods: {
-    getProducts () {
-      this.$http.get(`${VITE_API}/v2/api/${VITE_APIPATH}/products/all`)
+    getProducts (page = 1) {
+      this.$http.get(`${VITE_API}/v2/api/${VITE_APIPATH}/products/?page=${page}`)
         .then(res => {
           this.products = res.data.products
+          this.page = res.data.pagination
         })
         .catch(err => {
           Swal.fire({
