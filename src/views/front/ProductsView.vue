@@ -24,6 +24,7 @@
               </div>
             </div>
           </div>
+          <LoadingView v-model:active="isLoading"></LoadingView>
         </div>
         <!-- product list -->
         <div class="col-md-8">
@@ -60,7 +61,8 @@ export default {
   data () {
     return {
       products: [],
-      page: {}
+      page: {},
+      isLoading: false
     }
   },
   components: {
@@ -68,12 +70,15 @@ export default {
   },
   methods: {
     getProducts (page = 1) {
+      this.isLoading = true
       this.$http.get(`${VITE_API}/v2/api/${VITE_APIPATH}/products/?page=${page}`)
         .then(res => {
+          this.isLoading = false
           this.products = res.data.products
           this.page = res.data.pagination
         })
         .catch(err => {
+          this.isLoading = false
           Swal.fire({
             icon: 'error',
             title: `錯誤 ${err.response.status}`,
@@ -87,8 +92,10 @@ export default {
         product_id: id,
         qty: 1
       }
+      this.isLoading = true
       this.$http.post(`${VITE_API}/v2/api/${VITE_APIPATH}/cart`, { data })
         .then(res => {
+          this.isLoading = false
           Swal.fire({
             icon: 'success',
             title: res.data.message,
@@ -96,6 +103,7 @@ export default {
           })
         })
         .catch(err => {
+          this.isLoading = false
           Swal.fire({
             icon: 'error',
             title: `錯誤 ${err.response.status}`,

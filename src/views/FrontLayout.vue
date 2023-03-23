@@ -33,9 +33,9 @@
         <a class="text-white h4" href=""><img src="../../public/image/logo2.png" class="h-100" alt="logo"></a>
           </div>
           <ul class="list-unstyled text-white mb-1">
-              <li class="mb-2 fs-6">商品列表</li>
+              <li class="mb-2"><router-link to="/products" class="text-white">商品列表</router-link></li>
               <li class="mb-2">文章介紹</li>
-              <li class="mb-2">關於我們</li>
+              <li class="mb-2"><router-link to="/about" class="text-white">關於我們</router-link></li>
               <li class="mb-2"><router-link to="/admin">後台登入</router-link></li>
           </ul>
           <ul class="list-unstyled text-white mb-1">

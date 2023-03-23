@@ -1,6 +1,7 @@
 <template>
   <!-- cart template -->
-  <div class="container">
+  <div class="container mt-5">
+    <LoadingView v-model:active="isLoading"></LoadingView>
     <div class="mt-3">
       <button type="button" class="btn btn-outline-warning" @click="deleteAllProduct()">清空購物車</button>
       <h3 class="mt-3 mb-4">購物車</h3>
@@ -75,16 +76,20 @@ export default {
       products: [],
       productId: '',
       cart: {},
-      loadingItem: ''
+      loadingItem: '',
+      isLoading: false
     }
   },
   methods: {
     getCart () {
+      this.isLoading = true
       this.$http.get(`${VITE_API}/v2/api/${VITE_APIPATH}/cart`)
         .then(res => {
+          this.isLoading = false
           this.cart = res.data.data
         })
         .catch(err => {
+          this.isLoading = false
           Swal.fire({
             icon: 'error',
             title: `錯誤 ${err.response.status}`,
@@ -99,8 +104,10 @@ export default {
         qty: item.qty
       }
       this.loadingItem = item.id
+      this.isLoading = true
       this.$http.put(`${VITE_API}/v2/api/${VITE_APIPATH}/cart/${item.id}`, { data })
         .then(res => {
+          this.isLoading = false
           this.getCart()
           this.loadingItem = ''
           Swal.fire({
@@ -110,6 +117,7 @@ export default {
           })
         })
         .catch(err => {
+          this.isLoading = false
           this.loadingItem = ''
           Swal.fire({
             icon: 'error',
@@ -121,8 +129,10 @@ export default {
     },
     deleteProduct (item) {
       this.loadingItem = item.id
+      this.isLoading = true
       this.$http.delete(`${VITE_API}/v2/api/${VITE_APIPATH}/cart/${item.id}`)
         .then(res => {
+          this.isLoading = false
           this.getCart()
           this.loadingItem = ''
           Swal.fire({
@@ -132,6 +142,7 @@ export default {
           })
         })
         .catch(err => {
+          this.isLoading = false
           Swal.fire({
             icon: 'error',
             title: `錯誤 ${err.response.status}`,
@@ -141,8 +152,10 @@ export default {
         })
     },
     deleteAllProduct () {
+      this.isLoading = true
       this.$http.delete(`${VITE_API}/v2/api/${VITE_APIPATH}/carts`)
         .then(res => {
+          this.isLoading = false
           this.getCart()
           Swal.fire({
             icon: 'success',
@@ -151,6 +164,7 @@ export default {
           })
         })
         .catch(err => {
+          this.isLoading = false
           Swal.fire({
             icon: 'error',
             title: `錯誤 ${err.response.status}`,

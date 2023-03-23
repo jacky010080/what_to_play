@@ -7,6 +7,7 @@
     </div>
     <div class="row flex-row-reverse justify-content-center pb-5">
       <div class="col-4">
+        <LoadingView v-model:active="isLoading" class="mb-3"></LoadingView>
         <div class="border p-4 mb-4">
           <div class="d-flex mt-2" v-for="item in cart.carts" :key="item.id">
             <img :src="item.product.imageUrl" alt="" class="me-2" style="width: 48px; height: 48px; object-fit: cover">
@@ -87,6 +88,7 @@ export default {
       productId: '',
       cart: {},
       loadingItem: '',
+      isLoading: false,
       form: {
         user: {
           name: '',
@@ -100,11 +102,14 @@ export default {
   },
   methods: {
     getCart () {
+      this.isLoading = true
       this.$http.get(`${VITE_API}/v2/api/${VITE_APIPATH}/cart`)
         .then(res => {
+          this.isLoading = false
           this.cart = res.data.data
         })
         .catch(err => {
+          this.isLoading = false
           Swal.fire({
             icon: 'error',
             title: `錯誤 ${err.response.status}`,
@@ -115,8 +120,10 @@ export default {
     },
     createOrder () {
       const data = this.form
+      this.isLoading = true
       this.$http.post(`${VITE_API}/v2/api/${VITE_APIPATH}/order`, { data })
         .then(res => {
+          this.isLoading = false
           this.$refs.form.resetForm()
           this.getCart()
           Swal.fire({
@@ -126,6 +133,7 @@ export default {
           })
         })
         .catch(err => {
+          this.isLoading = false
           Swal.fire({
             icon: 'error',
             title: `錯誤 ${err.response.status}`,
