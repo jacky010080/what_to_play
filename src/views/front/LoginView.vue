@@ -1,8 +1,8 @@
 <template>
-  <div class="container mt-5">
+  <div class="container mt-5 pt-5">
     <div class="row justify-content-center">
-      <form id="form" class="form-signin col-8 d-flex flex-column" @submit.prevent="login">
-          <div class="form-floating mb-3">
+      <form id="form" class="form-signin col-8 d-flex flex-column mt-5 mb-5" @submit.prevent="login">
+          <div class="form-floating mb-4">
             <input
               type="email"
               class="form-control"
@@ -14,7 +14,7 @@
             />
             <label for="username">Email address</label>
           </div>
-          <div class="form-floating">
+          <div class="form-floating mb-4">
             <input
               type="password"
               class="form-control"

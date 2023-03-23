@@ -1,7 +1,8 @@
 <template>
     <div class="container mt-md-5 mt-3 mb-7">
-      <div class="row">
-        <div class="col-md-4">
+      <div class="row justify-content-center">
+        <!-- 目錄 -->
+        <div class="col-2">
           <div class="accordion border border-bottom border-top-0 border-start-0 border-end-0 mb-3" id="accordionExample">
             <div class="card border-0">
               <div class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0" id="headingOne" data-bs-toggle="collapse" data-bs-target="#collapseOne">
@@ -29,16 +30,16 @@
           <div class="row">
             <div class="col-md-6" v-for="product in products" :key="product.id">
               <div class="card border-0 mb-4 position-relative position-relative">
-                <img :src="product.imageUrl" class="card-img-top rounded-0" alt="...">
+                <img :src="product.imageUrl" class="card-img-top rounded-0" alt="..." style="max-height: 200px;object-fit: cover;object-position: top center;">
                 <a href="#" class="text-dark">
                   <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
                 </a>
                 <div class="card-body p-0 d-flex justify-content-between align-items-end">
-                  <div>
+                  <div class="w-75">
                     <h4 class="mb-0 mt-3 fs-5"><router-link :to="`/product/${product.id}`">{{ product.title }}</router-link></h4>
                     <p class="card-text mb-0">NT${{ product.price }} <span class="text-muted "><del>NT${{ product.origin_price }}</del></span></p>
                   </div>
-                  <button type="button" class="btn btn-outline-primary" @click="addToCart(product.id)">加入購物車</button>
+                  <button type="button" class="btn btn-outline-primary btn-sm" @click="addToCart(product.id)">加入購物車</button>
                 </div>
               </div>
             </div>

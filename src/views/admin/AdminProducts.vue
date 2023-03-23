@@ -21,8 +21,8 @@
         <tr v-for="product in products" :key="product.id">
           <td>{{ product.category }}</td>
           <td>{{ product.title }}</td>
-          <td class="text-end">{{ product.origin_price }}</td>
-          <td class="text-end">{{ product.price }}</td>
+          <td>{{ product.origin_price }}</td>
+          <td>{{ product.price }}</td>
           <td>
             <span class="text-success" v-if="product.is_enabled">啟用</span>
             <span v-else>未啟用</span>
@@ -144,13 +144,11 @@ export default {
           this.isLoading = false
           this.getData()
           this.$refs.productModal.modal.hide()
-          if (!this.isNew) {
-            Swal.fire({
-              icon: 'success',
-              title: res.data.message,
-              confirmButtonText: 'OK'
-            })
-          }
+          Swal.fire({
+            icon: 'success',
+            title: res.data.message,
+            confirmButtonText: 'OK'
+          })
         })
         .catch((err) => {
           this.isLoading = false
