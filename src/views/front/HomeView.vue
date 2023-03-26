@@ -24,99 +24,18 @@
         <h2 class="text-center fw-normal">商品一覽</h2>
         <div class="container">
           <div class="row justify-content-between mt-4">
-            <div class="col-4 mt-2">
-              <div class="card">
-                <img
-                  src="../../../public/image/branden-skeli-Y_-Pr7qLDf8-unsplash.png"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <div class="card-body d-flex align-items-end">
-                  <div>
-                    <p class="text-primary">RE-MENT 寶可夢 </p>
-                    <h4 class="fs-5">AQUA BOTTLE collection</h4>
+            <div class="col-4 mt-2" v-for="product in products" :key="product.id">
+              <div class="mb-4 position-relative position-relative">
+                <img :src="product.imageUrl" class="card-img-top rounded-0" alt="..." style="max-height: 150px;object-fit: cover;object-position: top center;">
+                <a href="#" class="text-dark">
+                  <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
+                </a>
+                <div class="card-body p-0 d-flex justify-content-between align-items-end">
+                  <div class="w-75">
+                    <h4 class="mb-0 mt-3 fs-5"><router-link :to="`/product/${product.id}`">{{ product.title }}</router-link></h4>
+                    <p class="card-text mb-0">NT${{ product.price }} <span class="text-muted "><del>NT${{ product.origin_price }}</del></span></p>
                   </div>
-                  <p class="text-warning">$290</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-4 mt-2">
-              <div class="card">
-                <img
-                  src="../../../public/image/branden-skeli-Y_-Pr7qLDf8-unsplash.png"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <div class="card-body d-flex align-items-end">
-                  <div>
-                    <p class="text-primary">RE-MENT 寶可夢 </p>
-                    <h4 class="fs-5">AQUA BOTTLE collection</h4>
-                  </div>
-                  <p class="text-warning">$290</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-4 mt-2">
-              <div class="card">
-                <img
-                  src="../../../public/image/branden-skeli-Y_-Pr7qLDf8-unsplash.png"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <div class="card-body d-flex align-items-end">
-                  <div>
-                    <p class="text-primary">RE-MENT 寶可夢 </p>
-                    <h4 class="fs-5">AQUA BOTTLE collection</h4>
-                  </div>
-                  <p class="text-warning">$290</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-4 mt-2">
-              <div class="card">
-                <img
-                  src="../../../public/image/branden-skeli-Y_-Pr7qLDf8-unsplash.png"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <div class="card-body d-flex align-items-end">
-                  <div>
-                    <p class="text-primary">RE-MENT 寶可夢 </p>
-                    <h4 class="fs-5">AQUA BOTTLE collection</h4>
-                  </div>
-                  <p class="text-warning">$290</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-4 mt-2">
-              <div class="card">
-                <img
-                  src="../../../public/image/branden-skeli-Y_-Pr7qLDf8-unsplash.png"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <div class="card-body d-flex align-items-end">
-                  <div>
-                    <p class="text-primary">RE-MENT 寶可夢 </p>
-                    <h4 class="fs-5">AQUA BOTTLE collection</h4>
-                  </div>
-                  <p class="text-warning">$290</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-4 mt-2">
-              <div class="card">
-                <img
-                  src="../../../public/image/branden-skeli-Y_-Pr7qLDf8-unsplash.png"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <div class="card-body d-flex align-items-end">
-                  <div>
-                    <p class="text-primary">RE-MENT 寶可夢 </p>
-                    <h4 class="fs-5">AQUA BOTTLE collection</h4>
-                  </div>
-                  <p class="text-warning">$290</p>
+                  <button type="button" class="btn btn-outline-primary btn-sm text-nowrap" @click="addToCart(product.id)">加入購物車</button>
                 </div>
               </div>
             </div>
@@ -138,9 +57,62 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+const { VITE_API, VITE_APIPATH } = import.meta.env
 
 export default {
-  components: {
+  data () {
+    return {
+      products: [],
+      isLoading: false
+    }
+  },
+  methods: {
+    getProducts (page = 1) {
+      this.isLoading = true
+      this.$http.get(`${VITE_API}/v2/api/${VITE_APIPATH}/products/?page=${page}`)
+        .then(res => {
+          this.isLoading = false
+          this.products = res.data.products
+        })
+        .catch(err => {
+          this.isLoading = false
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
+        })
+    },
+    addToCart (id) {
+      const data = {
+        product_id: id,
+        qty: 1
+      }
+      this.isLoading = true
+      this.$http.post(`${VITE_API}/v2/api/${VITE_APIPATH}/cart`, { data })
+        .then(res => {
+          this.isLoading = false
+          Swal.fire({
+            icon: 'success',
+            title: res.data.message,
+            confirmButtonText: 'OK'
+          })
+        })
+        .catch(err => {
+          this.isLoading = false
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
+        })
+    }
+  },
+  mounted () {
+    this.getProducts()
   }
 }
 </script>
