@@ -16,9 +16,10 @@
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="card-body py-0">
                   <ul class="list-unstyled">
-                    <li><a href="#" class="py-2 d-block text-muted">盒玩</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">扭蛋</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted">模型</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted" @click.prevent="category = ''">全部</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted" @click.prevent="category = '盒玩'">盒玩</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted" @click.prevent="category = '扭蛋'">扭蛋</a></li>
+                    <li><a href="#" class="py-2 d-block text-muted" @click.prevent="category = '模型'">模型</a></li>
                   </ul>
                 </div>
               </div>
@@ -28,7 +29,7 @@
         </div>
         <!-- product list -->
         <div class="col-md-8">
-          <div class="row">
+          <div class="row" v-if="this.category == ''">
             <div class="col-md-6" v-for="product in products" :key="product.id">
               <div class="card border-0 mb-4 position-relative position-relative">
                 <img :src="product.imageUrl" class="card-img-top rounded-0" alt="..." style="max-height: 200px;object-fit: cover;object-position: top center;">
@@ -40,7 +41,24 @@
                     <h4 class="mb-0 mt-3 fs-5"><router-link :to="`/product/${product.id}`">{{ product.title }}</router-link></h4>
                     <p class="card-text mb-0">NT${{ product.price }} <span class="text-muted "><del>NT${{ product.origin_price }}</del></span></p>
                   </div>
-                  <button type="button" class="btn btn-outline-primary btn-sm" @click="addToCart(product.id)">加入購物車</button>
+                  <button type="button" class="btn btn-outline-primary btn-sm text-nowrap" @click="addToCart(product.id)">加入購物車</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" v-else>
+            <div class="col-md-6" v-for="product in filteredProducts" :key="product.id">
+              <div class="card border-0 mb-4 position-relative position-relative">
+                <img :src="product.imageUrl" class="card-img-top rounded-0" alt="..." style="max-height: 200px;object-fit: cover;object-position: top center;">
+                <a href="#" class="text-dark">
+                  <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
+                </a>
+                <div class="card-body p-0 d-flex justify-content-between align-items-end">
+                  <div class="w-75">
+                    <h4 class="mb-0 mt-3 fs-5"><router-link :to="`/product/${product.id}`">{{ product.title }}</router-link></h4>
+                    <p class="card-text mb-0">NT${{ product.price }} <span class="text-muted "><del>NT${{ product.origin_price }}</del></span></p>
+                  </div>
+                  <button type="button" class="btn btn-outline-primary btn-sm text-nowrap" @click="addToCart(product.id)">加入購物車</button>
                 </div>
               </div>
             </div>
@@ -62,7 +80,13 @@ export default {
     return {
       products: [],
       page: {},
-      isLoading: false
+      isLoading: false,
+      category: ''
+    }
+  },
+  computed: {
+    filteredProducts () {
+      return this.products.filter(product => product.category === this.category)
     }
   },
   components: {
