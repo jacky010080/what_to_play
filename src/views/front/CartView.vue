@@ -58,7 +58,7 @@
               <p class="mb-0 h4 fw-bold">Total</p>
               <p class="mb-0 h4 fw-bold">NT${{ cart.total }}</p>
             </div>
-            <router-link to="/checkout" class="btn btn-primary w-100 mt-4">確認購買</router-link>
+            <router-link v-if="order_open" to="/checkout" class="btn btn-primary w-100 mt-4">確認購買</router-link>
           </div>
         </div>
       </div>
@@ -77,6 +77,7 @@ export default {
       productId: '',
       cart: {},
       loadingItem: '',
+      order_open: false,
       isLoading: false
     }
   },
@@ -87,6 +88,11 @@ export default {
         .then(res => {
           this.isLoading = false
           this.cart = res.data.data
+          if (this.cart.carts.length > 0) {
+            this.order_open = true
+          } else {
+            this.order_open = false
+          }
         })
         .catch(err => {
           this.isLoading = false

@@ -14,8 +14,8 @@
       <div class="col-4">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-white px-0 mb-0 py-3">
-            <li class="breadcrumb-item"><a class="text-muted" href="./index.html">Home</a></li>
-            <li class="breadcrumb-item"><a class="text-muted" href="./product.html">Product</a></li>
+            <li class="breadcrumb-item"><router-link to="/" class="text-muted">Home</router-link></li>
+            <li class="breadcrumb-item"><router-link to="/products" class="text-muted">Product</router-link></li>
             <li class="breadcrumb-item active" aria-current="page">Detail</li>
           </ol>
         </nav>

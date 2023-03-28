@@ -4,22 +4,6 @@
   <div class="container">
     <div class="row justify-content-center">
       <!-- welcome -->
-      <!-- <div class="col-md-10">
-        <div class="d-flex justify-content-center align-items-center">
-          <img src="../../../public/image/Rectangle262.png" alt="" class="w-25">
-          <div class="text-center">
-            <div class="d-flex justify-content-center align-items-center">
-              <h2 class="fs-1 fw-normal text-primary m-4">歡迎來到</h2>
-              <img src="../../../public/image/logo1.png" alt="">
-            </div>
-            <p class="fs-6 mb-0">我們專門銷售各式盒玩、扭蛋、模型，我們提供的服務讓各個年齡層的玩具愛好者都可以探索、了解和購買最新和最棒的玩具收藏。</p>
-          </div>
-          <div class="">
-            <img src="../../../public/image/Rectangle264.png" alt="" class="mt-5 pt-5">
-          </div>
-        </div>
-      </div> -->
-      <!-- trying -->
       <div class="col-md-10">
         <div class="row justify-content-center align-items-center">
           <div class="col-md-2">
