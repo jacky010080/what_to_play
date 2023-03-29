@@ -11,8 +11,8 @@
           </div>
           <div class="col-md-8 text-center">
             <div class="d-flex justify-content-center align-items-center">
-              <h2 class="fs-1 fw-normal text-primary m-4">歡迎來到</h2>
-              <img src="../../../public/image/logo1.png" alt="">
+              <h2 class="fs-1 fw-normal text-primary m-4 text-nowrap">歡迎來到</h2>
+              <img src="../../../public/image/logo1.png" alt="" class="w-50">
             </div>
             <p class="fs-6 mb-0">我們專門銷售各式盒玩、扭蛋、模型，我們提供的服務讓各個年齡層的玩具愛好者都可以探索、了解和購買最新和最棒的玩具收藏。</p>
           </div>
@@ -43,17 +43,29 @@
             </div>
           </div>
         </div>
-        <router-link to="/products" class="btn btn-primary rounded-pill text-white text-center w-25 mt-4">查看更多</router-link>
+        <router-link to="/products" class="btn btn-primary rounded-pill text-white text-center mt-4 text-nowrap">查看更多</router-link>
       </div>
     </div>
   </div>
   <!-- more -->
-  <div class="position-relative text-white mt-5">
+  <!-- <div class="position-relative text-white mt-5">
     <img src="../../../public/image/Rectangle263.png" alt="" class="mw-100">
     <div class="fs-6 text-center position-absolute top-50 start-50 translate-middle" style="width: 45%; margin-left: 100px;">
       <p>我們的網站提供一個容易操作的介面，讓瀏覽和購買玩具成為有趣和愉快的體驗。我們還提供詳細的產品描述和高品質的圖片，幫助您做出明智的購買選擇。
       </p>
-      <router-link to="/about" class="btn btn-primary rounded-pill text-white text-center w-25">了解更多</router-link>
+      <router-link to="/about" class="btn btn-primary rounded-pill text-white text-center text-nowrap">了解更多</router-link>
+    </div>
+  </div> -->
+  <!-- trying -->
+  <div style="background-image: url('../../../public/image/Rectangle263.png');background-size: cover;">
+    <div class="text-white mt-5 container">
+      <div class="fs-6 text-center row justify-content-center">
+        <div class="col-md-6 my-5">
+          <p>我們的網站提供一個容易操作的介面，讓瀏覽和購買玩具成為有趣和愉快的體驗。我們還提供詳細的產品描述和高品質的圖片，幫助您做出明智的購買選擇。
+          </p>
+          <router-link to="/about" class="btn btn-primary rounded-pill text-white text-center text-nowrap">了解更多</router-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -27,7 +27,7 @@
                   </td>
                   <td scope="row" class="border-0 px-0 font-weight-normal py-4">
                     <img :src="item.product.imageUrl" alt="" style="width: 72px; height: 72px; object-fit: cover;">
-                    <p class="mb-0 fw-bold ms-3 d-inline-block">{{ item.product.title }}</p>
+                    <p class="mb-0 fw-bold ms-md-3 d-inline-block">{{ item.product.title }}</p>
                   </td>
                   <td class="border-0 align-middle">
                     <div class="input-group input-group-sm">

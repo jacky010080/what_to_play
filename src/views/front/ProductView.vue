@@ -1,7 +1,7 @@
 <template>
   <div class="container my-5">
     <div class="row justify-content-center align-items-center">
-      <div class="col-6">
+      <div class="col-md-6">
         <LoadingView v-model:active="isLoading"></LoadingView>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
@@ -11,7 +11,7 @@
           </div>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-md-4">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-white px-0 mb-0 py-3">
             <li class="breadcrumb-item"><router-link to="/" class="text-muted">Home</router-link></li>
@@ -39,13 +39,13 @@
             </div>
           </div>
           <div class="col-6">
-            <button type="button" class="btn btn-primary w-100 py-2 text-nowrap" @click="addToCart(product.id)">加入購物車</button>
+            <button type="button" class="btn btn-primary py-2 text-nowrap w-100" @click="addToCart(product.id)">加入購物車</button>
           </div>
         </div>
       </div>
     </div>
     <div class="row my-5 col-12 justify-content-center">
-      <div class="col-6">
+      <div class="col-md-6">
         <p>{{ product.description }}</p>
       </div>
       <div class="col-md-4">

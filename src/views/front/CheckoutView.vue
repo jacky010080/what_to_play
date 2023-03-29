@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row flex-row-reverse justify-content-center pb-5">
-      <div class="col-4">
+      <div class="col-md-4">
         <LoadingView v-model:active="isLoading" class="mb-3"></LoadingView>
         <div class="border p-4 mb-4">
           <div class="d-flex mt-2" v-for="item in cart.carts" :key="item.id">
@@ -38,7 +38,7 @@
         </div>
       </div>
       <!-- 訂單驗證 -->
-      <div class="col-6">
+      <div class="col-md-6">
         <FormView ref="form" v-slot="{ errors }" @submit="createOrder">
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
@@ -69,7 +69,7 @@
             <textarea id="message" class="form-control" cols="30" rows="10" v-model="form.message"></textarea>
           </div>
           <div class="text-end">
-            <button type="submit" class="btn btn-primary">送出訂單</button>
+            <button type="submit" class="btn btn-primary text-nowrap">送出訂單</button>
           </div>
         </FormView>
       </div>

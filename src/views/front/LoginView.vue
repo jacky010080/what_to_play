@@ -25,7 +25,7 @@
             />
             <label for="password">Password</label>
           </div>
-          <button class="btn btn-lg btn-primary align-self-center w-25 mt-3 mb-5" type="submit">
+          <button class="btn btn-lg btn-primary align-self-center mt-3 mb-5 text-nowrap" type="submit">
             登入
           </button>
         </form>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 const { VITE_API } = import.meta.env
 
 export default {
@@ -49,13 +50,22 @@ export default {
     login () {
       this.$http.post(`${VITE_API}/v2/admin/signin`, this.user)
         .then((res) => {
-          alert(res.data.message)
           const { token, expired } = res.data
           document.cookie = `hexToken=${token}; expires=${new Date(expired)};`
           this.$router.push('/admin/products')
+          Swal.fire({
+            icon: 'success',
+            title: res.data.message,
+            confirmButtonText: 'OK'
+          })
         })
         .catch((err) => {
-          alert(err.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
         })
     }
   }
