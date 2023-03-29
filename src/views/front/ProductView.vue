@@ -44,12 +44,36 @@
         </div>
       </div>
     </div>
+    <!-- 單一商品介紹 -->
     <div class="row my-5 col-12 justify-content-center">
       <div class="col-md-6">
         <p>{{ product.description }}</p>
       </div>
       <div class="col-md-4">
         <p class="text-muted">{{ product.content }}</p>
+      </div>
+    </div>
+    <!-- relativeProducts -->
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+          <div class="row justify-content-between mt-4">
+            <h3 class="fw-bold">你可能還喜歡...</h3>
+            <div class="col-md-4 mt-2" v-for="item in products" :key="item.id">
+              <div class="mb-4 position-relative position-relative">
+                <img :src="item.imageUrl" class="card-img-top rounded-0" alt="..." style="max-height: 150px;object-fit: cover;object-position: top center;">
+                <a href="#" class="text-dark">
+                  <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
+                </a>
+                <div class="card-body p-0 d-flex justify-content-between align-items-end">
+                  <div class="w-75">
+                    <h4 class="mb-0 mt-3 fs-5"><router-link :to="`/product/${item.id}`">{{ item.title }}</router-link></h4>
+                    <p class="card-text mb-0">NT${{ item.price }} <span class="text-muted "><del>NT${{ item.origin_price }}</del></span></p>
+                  </div>
+                  <button type="button" class="btn btn-outline-primary btn-sm text-nowrap" @click="addToCart(item.id)">加入購物車</button>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -63,17 +87,45 @@ export default {
   data () {
     return {
       product: {},
+      products: [],
       isLoading: false
     }
   },
   methods: {
-    getProduct () {
+    getTargetProduct () {
       const { id } = this.$route.params
       this.isLoading = true
       this.$http.get(`${VITE_API}/v2/api/${VITE_APIPATH}/product/${id}`)
         .then(res => {
           this.isLoading = false
           this.product = res.data.product
+          this.getProducts()
+        })
+        .catch(err => {
+          this.isLoading = false
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
+        })
+    },
+    getProducts (page = 1) {
+      this.isLoading = true
+      this.$http.get(`${VITE_API}/v2/api/${VITE_APIPATH}/products/?page=${page}`)
+        .then(res => {
+          this.isLoading = false
+          console.log(res.data.products)
+          for (const item of res.data.products) {
+            if (item.id !== this.product.id && item.category === this.product.category) {
+              this.products.push(item)
+            }
+            if (this.products.length >= 3) {
+              break
+            }
+          }
+          console.log(this.products)
         })
         .catch(err => {
           this.isLoading = false
@@ -112,7 +164,7 @@ export default {
     }
   },
   mounted () {
-    this.getProduct()
+    this.getTargetProduct()
   }
 }
 </script>
