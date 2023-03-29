@@ -14,7 +14,7 @@
           <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <router-link to="/products" class="nav-item nav-link me-4 active">商品列表</router-link>
-              <a class="nav-item nav-link me-4">文章介紹</a>
+              <router-link to="/articles" class="nav-item nav-link me-4">文章介紹</router-link>
               <router-link to="/about" class="nav-item nav-link me-4">關於我們</router-link>
               <router-link to="/cart" class="nav-item nav-link"><img src="../../public/image/Vector.png" alt=""></router-link>
             </div>

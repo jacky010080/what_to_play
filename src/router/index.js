@@ -34,6 +34,14 @@ const routes = [
       {
         path: 'checkout',
         component: () => import('../views/front/CheckoutView.vue')
+      },
+      {
+        path: 'articles',
+        component: () => import('../views/front/ArticlesView.vue')
+      },
+      {
+        path: 'article/:id',
+        component: () => import('../views/front/ArticleView.vue')
       }
     ]
   },
