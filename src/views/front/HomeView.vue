@@ -12,7 +12,7 @@
           <div class="col-md-8 text-center">
             <div class="d-flex justify-content-center align-items-center">
               <h2 class="fs-1 fw-normal text-primary m-4 text-nowrap">歡迎來到</h2>
-              <img src="../../../public/image/logo1.png" alt="" class="w-50">
+              <img src="../../../public/image/logo1.png" alt="" class="mw-50">
             </div>
             <p class="fs-6 mb-0">我們專門銷售各式盒玩、扭蛋、模型，我們提供的服務讓各個年齡層的玩具愛好者都可以探索、了解和購買最新和最棒的玩具收藏。</p>
           </div>

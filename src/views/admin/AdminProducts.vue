@@ -49,20 +49,18 @@
       </tbody>
     </table>
     <PaginationView :pages="page" @emit-page="getData"></PaginationView>
-    </div>
-    <!-- 新增||編輯Modal -->
-    <ProductModal
+  </div>
+  <!-- 新增||編輯Modal -->
+  <ProductModal
     ref="productModal"
     :is-new="isNew"
     :product="tempProduct"
-    @update-product="updateProduct">
-    </ProductModal>
-    <!-- 刪除商品Modal -->
-    <DeleteModal
-    ref="delModal"
-    :item="tempProduct"
-    @delete="deleteProduct">
-    </DeleteModal>
+    @update-product="updateProduct"
+  >
+  </ProductModal>
+  <!-- 刪除商品Modal -->
+  <DeleteModal ref="delModal" :item="tempProduct" @delete="deleteProduct">
+  </DeleteModal>
 </template>
 
 <script>
@@ -93,7 +91,8 @@ export default {
     getData (page = 1) {
       const url = `${VITE_API}/v2/api/${VITE_APIPATH}/admin/products/?page=${page}`
       this.isLoading = true
-      this.$http.get(url)
+      this.$http
+        .get(url)
         .then((res) => {
           this.isLoading = false
           this.products = res.data.products
@@ -163,7 +162,8 @@ export default {
     deleteProduct () {
       const url = `${VITE_API}/v2/api/${VITE_APIPATH}/admin/product/${this.tempProduct.id}`
       this.isLoading = true
-      this.$http.delete(url)
+      this.$http
+        .delete(url)
         .then((res) => {
           this.isLoading = false
           this.$refs.delModal.modal.hide()
