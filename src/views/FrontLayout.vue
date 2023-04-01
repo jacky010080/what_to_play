@@ -53,11 +53,11 @@
             <div class="col-md-4">
               <div class="d-flex flex-column align-items-end justify-content-between text-white">
                 <ul class="d-flex list-unstyled mb-0 h4 flex-wrap">
-                  <li><a href="#" class="text-white mx-3"><img src="../../public/image/fb.png" alt="facebook" class="bg-white rounded-circle border border-5"></a></li>
-                  <li><a href="#" class="text-white mx-3"><img src="../../public/image/linkedin.svg" alt=""></a></li>
-                  <li><a href="#" class="text-white ms-3"><img src="../../public/image/ig.png" alt="instagram" class="bg-white rounded-circle border border-5"></a></li>
+                  <li><a href="#" class="text-white mx-2"><img src="../../public/image/fb.png" alt="facebook" class="bg-white rounded-circle border border-5" style="height: 45px;"></a></li>
+                  <li><a href="#" class="text-white mx-2"><img src="../../public/image/linkedin.svg" alt="linkedlin" class="bg-white rounded-circle border border-5" style="height: 45px;"></a></li>
+                  <li><a href="#" class="text-white mx-2"><img src="../../public/image/ig.png" alt="instagram" class="bg-white rounded-circle border border-5" style="height: 45px;"></a></li>
                 </ul>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end mt-4">
                   <p class="mb-0">Copyright©  2023 盒玩，何玩？</p>
                   <p class="mb-0">所有圖片為個人練習使用，無商業用途</p>
                 </div>
