@@ -16,7 +16,7 @@
               <router-link to="/products" class="nav-item nav-link me-4 active">商品列表</router-link>
               <router-link to="/articles" class="nav-item nav-link me-4">文章介紹</router-link>
               <router-link to="/about" class="nav-item nav-link me-4">關於我們</router-link>
-              <router-link to="/cart" class="nav-item nav-link"><img src="../../public/image/Vector.png" alt=""></router-link>
+              <router-link to="/cart" class="nav-item nav-link"><img src="../../public/image/cart.png" alt=""></router-link>
             </div>
           </div>
         </nav>
