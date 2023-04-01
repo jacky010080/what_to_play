@@ -1,6 +1,6 @@
 <template>
   <!-- banner -->
-  <img src="../../../public/image/bannerImage.jpg" alt="banner" style="max-width: 100%;">
+  <img src="/public/image/bannerImage.jpg" alt="banner" style="max-width: 100%;">
   <div class="container">
     <div class="row justify-content-center">
       <!-- welcome -->
@@ -22,7 +22,7 @@
         </div>
       </div>
       <!-- article -->
-      <div class="col-md-10 my-5" style="background: url('../../../public/image/articleBackground.png') center center; background-size: cover; height: 100%;">
+      <div class="col-md-10 my-5" style="background: url('/public/image/articleBackground.png') center center; background-size: cover; height: 100%;">
         <div class="row justify-content-end">
           <div class="col-md-5 text-white bg-dark" style="height: 380px; --bs-bg-opacity: .6;">
             <div class="mx-md-4 mt-4">
@@ -60,7 +60,7 @@
     </div>
   </div>
   <!-- more -->
-  <div style="background-image: url('../../../public/image/knowMore.png');background-size: cover;">
+  <div style="background-image: url('/public/image/knowMore.png');background-size: cover;">
     <div class="text-white mt-5 container">
       <div class="fs-6 text-center row justify-content-center">
         <div class="col-md-6 my-5">
