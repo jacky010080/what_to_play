@@ -28,7 +28,7 @@
             <div class="mx-md-4 mt-4">
               <h2 class="fw-normal mb-4">文章介紹</h2>
               <p class="">不定期分享盒玩、扭蛋開箱，以及我們對它的介紹與評價，如果你正在猶豫中不知道該買哪款，歡迎點進去看看有沒有喜歡的唷！</p>
-              <router-link to="/articles" class="btn btn-primary rounded-pill text-white text-center text-nowrap">查看更多</router-link>
+              <router-link to="/articles" class="btn btn-primary rounded-pill text-white text-center text-nowrap px-5">查看更多</router-link>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@
             </div>
           </div>
         </div>
-        <router-link to="/products" class="btn btn-primary rounded-pill text-white text-center mt-4 text-nowrap">查看更多</router-link>
+        <router-link to="/products" class="btn btn-primary rounded-pill text-white text-center mt-4 text-nowrap px-5">查看更多</router-link>
       </div>
     </div>
   </div>
@@ -66,7 +66,7 @@
         <div class="col-md-6 my-5">
           <p>我們的網站提供一個容易操作的介面，讓瀏覽和購買玩具成為有趣和愉快的體驗。我們還提供詳細的產品描述和高品質的圖片，幫助您做出明智的購買選擇。
           </p>
-          <router-link to="/about" class="btn btn-primary rounded-pill text-white text-center text-nowrap">了解更多</router-link>
+          <router-link to="/about" class="btn btn-primary rounded-pill text-white text-center text-nowrap px-5">了解更多</router-link>
         </div>
       </div>
     </div>

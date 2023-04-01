@@ -8,9 +8,23 @@
   <!-- navbar -->
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-10">
+      <div class="col-md-10">
         <nav class="navbar navbar-expand-lg navbar-light">
           <router-link to="/"><img src="../../public/image/logo1.png" class="h-100" alt="logo"></router-link>
+          <!-- dropdown -->
+          <div v-if="showElement">
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="../../public/image/dropdown.png" alt="">
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li class="ps-2"><router-link to="/products" class="nav-item nav-link">商品列表</router-link></li>
+                <li class="ps-2"><router-link to="/articles" class="nav-item nav-link text-nowrap">文章介紹</router-link></li>
+                <li class="ps-2"><router-link to="/about" class="nav-item nav-link">關於我們</router-link></li>
+                <li class="ps-2"><router-link to="/cart" class="nav-item nav-link"><img src="../../public/image/cart.png" alt=""></router-link></li>
+              </ul>
+            </div>
+          </div>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <router-link to="/products" class="nav-item nav-link me-4 active">商品列表</router-link>
@@ -71,10 +85,33 @@
 </template>
 
 <script>
-import { RouterView } from 'vue-router'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+
 export default {
-  components: {
-    RouterView
+  data () {
+    return {
+      showElement: false,
+      windowWidth: 0
+    }
+  },
+  mounted () {
+    // 取得視窗寬度
+    this.windowWidth = window.innerWidth
+    // 註冊 resize 事件監聽器
+    window.addEventListener('resize', this.handleResize)
+    // 初始狀態下是否要顯示元件，這裡以視窗寬度小於 768px 為例
+    this.showElement = this.windowWidth < 768
+  },
+  beforeUnmount () {
+    // 移除 resize 事件監聽器
+    window.removeEventListener('resize', this.handleResize)
+  },
+  methods: {
+    handleResize () {
+      // 視窗寬度改變時，更新 showElement 的值
+      this.windowWidth = window.innerWidth
+      this.showElement = this.windowWidth < 768
+    }
   }
 }
 </script>
