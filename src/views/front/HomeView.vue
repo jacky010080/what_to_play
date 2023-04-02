@@ -22,7 +22,7 @@
         </div>
       </div>
       <!-- article -->
-      <div class="col-md-10 my-5" style="background: url('{{ site.baseurl }}/image/articleBackground.png') center center; background-size: cover; height: 100%;">
+      <div class="col-md-10 my-5" style="background: center center; background-size: cover; height: 100%;" :style="{ backgroundImage: `url(${articleBackgroundPath})` }">
         <div class="row justify-content-end">
           <div class="col-md-5 text-white bg-dark" style="height: 380px; --bs-bg-opacity: .6;">
             <div class="mx-md-4 mt-4">
@@ -60,7 +60,7 @@
     </div>
   </div>
   <!-- more -->
-  <div style="background-image: url('{{ site.baseurl }}/image/knowMore.png');background-size: cover;">
+  <div style="background-size: cover;" :style="{ backgroundImage: `url(${knowMorePath})` }">
     <div class="text-white mt-5 container">
       <div class="fs-6 text-center row justify-content-center">
         <div class="col-md-6 my-5">
@@ -74,6 +74,8 @@
 </template>
 
 <script>
+import articleBackgroundPath from '../../../public/image/articleBackground.png'
+import knowMorePath from '../../../public/image/knowMore.png'
 import Swal from 'sweetalert2'
 const { VITE_API, VITE_APIPATH } = import.meta.env
 
@@ -81,7 +83,9 @@ export default {
   data () {
     return {
       products: [],
-      isLoading: false
+      isLoading: false,
+      articleBackgroundPath,
+      knowMorePath
     }
   },
   methods: {
