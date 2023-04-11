@@ -34,22 +34,20 @@
         </div>
       </div>
       <!-- product_list -->
-      <div class="col-10 d-flex flex-column align-items-center mb-5">
+      <div class="col-10 d-flex flex-column align-items-center mb-5 px-0">
         <h2 class="text-center fw-normal">商品一覽</h2>
-        <div class="container">
-          <div class="row justify-content-between mt-4">
-            <div class="col-md-4 mt-2" v-for="product in products" :key="product.id">
-              <div class="mb-4 position-relative position-relative">
-                <img :src="product.imageUrl" class="card-img-top rounded-0" alt="..." style="max-height: 150px;object-fit: cover;object-position: top center;">
+        <div class="container px-2">
+          <div class="row justify-content-between my-4">
+            <div class=" col-md-4 my-3 px-1" v-for="product in products" :key="product.id" style="">
+              <div class="card mb-2 position-relative position-relative">
+                <img :src="product.imageUrl" class="card-img-top rounded-0" alt="..." style="height: 150px;object-fit: cover;object-position: top center;">
                 <a href="#" class="text-dark">
                   <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
                 </a>
-                <div class="card-body p-0 d-flex justify-content-between align-items-end">
-                  <div class="w-75">
-                    <h4 class="mb-0 mt-3 fs-5"><router-link :to="`/product/${product.id}`">{{ product.title }}</router-link></h4>
+                <div class="card-body pb-2 d-flex flex-column justify-content-between" style="height: 160px;">
+                    <h4 class="mt-3 fs-5"><router-link :to="`/product/${product.id}`">{{ product.title }}</router-link></h4>
                     <p class="card-text mb-0">NT${{ product.price }} <span class="text-muted "><del>NT${{ product.origin_price }}</del></span></p>
-                  </div>
-                  <button type="button" class="btn btn-outline-primary btn-sm text-nowrap" @click="addToCart(product.id)">加入購物車</button>
+                  <button type="button" class="btn btn-outline-primary btn-sm text-nowrap align-self-end" @click="addToCart(product.id)">加入購物車</button>
                 </div>
               </div>
             </div>
