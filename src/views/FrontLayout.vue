@@ -44,34 +44,37 @@
       <div class="row justify-content-center">
         <div class="col-md-10">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 d-flex justify-content-md-start justify-content-center">
               <a class="text-white h4" href="">
                 <img src="../../public/image/logo2.png" class="mh-100" alt="logo">
               </a>
             </div>
-            <div class="col-md-2">
-              <ul class="list-unstyled text-white mb-1">
-                <li class="mb-2"><router-link to="/products" class="text-white">商品列表</router-link></li>
-                <li class="mb-2">文章介紹</li>
-                <li class="mb-2"><router-link to="/about" class="text-white">關於我們</router-link></li>
-                <li class="mb-2"><router-link to="/admin">後台登入</router-link></li>
+            <!-- first list -->
+            <div class="col-md-2 mt-md-0 mt-4">
+              <ul class="list-unstyled text-white mb-1 d-flex flex-md-column justify-content-md-start justify-content-center">
+                <li class="mb-2 mx-md-0 mx-3"><router-link to="/products" class="text-white">商品列表</router-link></li>
+                <li class="mb-2 mx-md-0 mx-3">文章介紹</li>
+                <li class="mb-2 mx-md-0 mx-3"><router-link to="/about" class="text-white">關於我們</router-link></li>
+                <li class="mb-2 mx-md-0 mx-3"><router-link to="/admin">後台登入</router-link></li>
               </ul>
             </div>
-            <div class="col-md-2">
-              <ul class="list-unstyled text-white mb-1">
+            <!-- second list -->
+            <div class="col-md-2 mt-md-0 mt-4">
+              <ul class="list-unstyled text-white mb-1 d-flex flex-column align-items-md-start align-items-center">
                 <li class="mb-2">聯絡我們</li>
                 <li class="mb-2">123456789@gmail.com</li>
                 <li class="mb-2">(02) 1234-5678</li>
               </ul>
             </div>
+            <!-- contact -->
             <div class="col-md-4">
-              <div class="d-flex flex-column align-items-end justify-content-between text-white">
-                <ul class="d-flex list-unstyled mb-0 h4 flex-wrap">
+              <div class="d-flex flex-column justify-content-between align-items-md-end align-items-center text-white">
+                <ul class="d-flex list-unstyled mb-0 mt-md-0 mt-4 flex-wrap">
                   <li><a href="#" class="text-white mx-2"><img src="../../public/image/fb.png" alt="facebook" class="bg-white rounded-circle border border-5" style="height: 45px;"></a></li>
                   <li><a href="#" class="text-white mx-2"><img src="../../public/image/linkedin.svg" alt="linkedlin" class="bg-white rounded-circle border border-5" style="height: 45px;"></a></li>
                   <li><a href="#" class="text-white mx-2"><img src="../../public/image/ig.png" alt="instagram" class="bg-white rounded-circle border border-5" style="height: 45px;"></a></li>
                 </ul>
-                <div class="d-flex flex-column align-items-end mt-4">
+                <div class="d-flex flex-column align-items-md-end align-items-center mt-md-0 mt-4">
                   <p class="mb-0">Copyright©  2023 盒玩，何玩？</p>
                   <p class="mb-0">所有圖片為個人練習使用，無商業用途</p>
                 </div>
