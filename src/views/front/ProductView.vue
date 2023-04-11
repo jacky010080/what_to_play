@@ -116,7 +116,6 @@ export default {
       this.$http.get(`${VITE_API}/v2/api/${VITE_APIPATH}/products/?page=${page}`)
         .then(res => {
           this.isLoading = false
-          console.log(res.data.products)
           for (const item of res.data.products) {
             if (item.id !== this.product.id && item.category === this.product.category) {
               this.products.push(item)
@@ -125,7 +124,6 @@ export default {
               break
             }
           }
-          console.log(this.products)
         })
         .catch(err => {
           this.isLoading = false

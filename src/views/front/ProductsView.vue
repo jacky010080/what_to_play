@@ -30,35 +30,35 @@
         <!-- product list -->
         <div class="col-md-8">
           <div class="row" v-if="this.category == ''">
-            <div class="col-md-6" v-for="product in products" :key="product.id">
-              <div class="card border-0 mb-4 position-relative position-relative">
-                <img :src="product.imageUrl" class="card-img-top rounded-0" alt="..." style="max-height: 200px;object-fit: cover;object-position: top center;">
+            <div class=" col-md-6 mb-4" v-for="product in products" :key="product.id">
+              <div class="card mb-2 position-relative position-relative">
+                <router-link :to="`/product/${product.id}`">
+                  <img :src="product.imageUrl" class="card-img-top rounded-0" alt="..." style="max-height: 150px;object-fit: cover;object-position: top center;">
+                </router-link>
                 <a href="#" class="text-dark">
                   <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
                 </a>
-                <div class="card-body p-0 d-flex justify-content-between align-items-end">
-                  <div class="w-75">
-                    <h4 class="mb-0 mt-3 fs-5"><router-link :to="`/product/${product.id}`">{{ product.title }}</router-link></h4>
-                    <p class="card-text mb-0">NT${{ product.price }} <span class="text-muted "><del>NT${{ product.origin_price }}</del></span></p>
-                  </div>
-                  <button type="button" class="btn btn-outline-primary btn-sm text-nowrap" @click="addToCart(product.id)">加入購物車</button>
+                <div class="card-body pb-2 d-flex flex-column justify-content-between" style="height: 160px;">
+                  <router-link :to="`/product/${product.id}`"><h4 class="mt-3 fs-5">{{ product.title }}</h4></router-link>
+                  <p class="card-text mb-0">NT${{ product.price }} <span class="text-muted "><del>NT${{ product.origin_price }}</del></span></p>
+                  <button type="button" class="btn btn-outline-primary btn-sm text-nowrap align-self-end" @click="addToCart(product.id)">加入購物車</button>
                 </div>
               </div>
             </div>
           </div>
           <div class="row" v-else>
-            <div class="col-md-6" v-for="product in filteredProducts" :key="product.id">
-              <div class="card border-0 mb-4 position-relative position-relative">
-                <img :src="product.imageUrl" class="card-img-top rounded-0" alt="..." style="max-height: 200px;object-fit: cover;object-position: top center;">
+            <div class=" col-md-6 mb-4" v-for="product in filteredProducts" :key="product.id">
+              <div class="card mb-2 position-relative position-relative">
+                <router-link :to="`/product/${product.id}`">
+                  <img :src="product.imageUrl" class="card-img-top rounded-0" alt="..." style="max-height: 150px;object-fit: cover;object-position: top center;">
+                </router-link>
                 <a href="#" class="text-dark">
                   <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
                 </a>
-                <div class="card-body p-0 d-flex justify-content-between align-items-end">
-                  <div class="w-75">
-                    <h4 class="mb-0 mt-3 fs-5"><router-link :to="`/product/${product.id}`">{{ product.title }}</router-link></h4>
-                    <p class="card-text mb-0">NT${{ product.price }} <span class="text-muted "><del>NT${{ product.origin_price }}</del></span></p>
-                  </div>
-                  <button type="button" class="btn btn-outline-primary btn-sm text-nowrap" @click="addToCart(product.id)">加入購物車</button>
+                <div class="card-body pb-2 d-flex flex-column justify-content-between" style="height: 160px;">
+                  <router-link :to="`/product/${product.id}`"><h4 class="mt-3 fs-5">{{ product.title }}</h4></router-link>
+                  <p class="card-text mb-0">NT${{ product.price }} <span class="text-muted "><del>NT${{ product.origin_price }}</del></span></p>
+                  <button type="button" class="btn btn-outline-primary btn-sm text-nowrap align-self-end" @click="addToCart(product.id)">加入購物車</button>
                 </div>
               </div>
             </div>
