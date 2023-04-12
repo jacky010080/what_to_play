@@ -4,7 +4,7 @@
         <!-- 目錄 -->
         <div class="col-2">
           <div class="accordion border border-bottom border-top-0 border-start-0 border-end-0 mb-3" id="accordionExample">
-            <div class="card border-0">
+            <div class="card border-0 d-flex flex-column align-items-md-start align-items-center">
               <div class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0" id="headingOne" data-bs-toggle="collapse" data-bs-target="#collapseOne">
                 <div class="pe-1">
                   <h4 class="mb-0 text-nowrap">
@@ -16,10 +16,18 @@
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="card-body py-0">
                   <ul class="list-unstyled">
-                    <li><a href="#" class="py-2 d-block text-muted text-nowrap" @click.prevent="category = ''">全部</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted text-nowrap" @click.prevent="category = '盒玩'">盒玩</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted text-nowrap" @click.prevent="category = '扭蛋'">扭蛋</a></li>
-                    <li><a href="#" class="py-2 d-block text-muted text-nowrap" @click.prevent="category = '模型'">模型</a></li>
+                    <li>
+                      <a href="#" class="py-2 d-block text-muted text-nowrap link-primary" @click.prevent="category = ''">全部</a>
+                    </li>
+                    <li>
+                      <a href="#" class="py-2 d-block text-muted text-nowrap link-primary" @click.prevent="category = '盒玩'">盒玩</a>
+                    </li>
+                    <li>
+                      <a href="#" class="py-2 d-block text-muted text-nowrap link-primary" @click.prevent="category = '扭蛋'">扭蛋</a>
+                    </li>
+                    <li>
+                      <a href="#" class="py-2 d-block text-muted text-nowrap link-primary" @click.prevent="category = '模型'">模型</a>
+                    </li>
                   </ul>
                 </div>
               </div>

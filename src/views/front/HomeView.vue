@@ -47,7 +47,9 @@
                   <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
                 </a>
                 <div class="card-body pb-2 d-flex flex-column justify-content-between" style="height: 160px;">
-                  <router-link :to="`/product/${product.id}`"><h4 class="mt-3 fs-5">{{ product.title }}</h4></router-link>
+                  <router-link :to="`/product/${product.id}`">
+                    <h4 class="mt-3 fs-5">{{ product.title }}</h4>
+                  </router-link>
                   <p class="card-text mb-0">NT${{ product.price }} <span class="text-muted "><del>NT${{ product.origin_price }}</del></span></p>
                   <button type="button" class="btn btn-outline-primary btn-sm text-nowrap align-self-end" @click="addToCart(product.id)">加入購物車</button>
                 </div>
