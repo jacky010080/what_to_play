@@ -60,13 +60,17 @@
             <h3 class="fw-bold">你可能還喜歡...</h3>
             <div class="col-md-4 mt-2" v-for="item in products" :key="item.id">
               <div class="mb-4 position-relative position-relative">
-                <img :src="item.imageUrl" class="card-img-top rounded-0" alt="..." style="max-height: 150px;object-fit: cover;object-position: top center;">
+                <router-link :to="`/product/${item.id}`" @click="goToProduct(item.id)">
+                  <img :src="item.imageUrl" class="card-img-top rounded-0" alt="..." style="max-height: 150px;object-fit: cover;object-position: top center;">
+                </router-link>
                 <a href="#" class="text-dark">
                   <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
                 </a>
                 <div class="card-body p-0 d-flex justify-content-between align-items-end">
                   <div class="w-75">
-                    <h4 class="mb-0 mt-3 fs-5"><router-link :to="`/product/${item.id}`">{{ item.title }}</router-link></h4>
+                    <router-link :to="`/product/${item.id}`" @click="goToProduct(item.id)">
+                      <h4 class="mb-0 mt-3 fs-5">{{ item.title }}</h4>
+                    </router-link>
                     <p class="card-text mb-0">NT${{ item.price }} <span class="text-muted "><del>NT${{ item.origin_price }}</del></span></p>
                   </div>
                   <button type="button" class="btn btn-outline-primary btn-sm text-nowrap" @click="addToCart(item.id)">加入購物車</button>
@@ -159,6 +163,11 @@ export default {
             confirmButtonText: 'OK'
           })
         })
+    },
+    goToProduct (productId) {
+      this.$router.push(`/product/${productId}`).then(() => {
+        location.reload() // 自動重新加載頁面
+      })
     }
   },
   mounted () {
