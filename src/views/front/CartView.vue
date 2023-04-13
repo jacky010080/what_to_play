@@ -1,5 +1,4 @@
 <template>
-  <!-- cart template -->
   <div class="container mt-5">
     <LoadingView v-model:active="isLoading"></LoadingView>
     <div class="mt-3">
@@ -20,23 +19,38 @@
               <template v-if="cart.carts">
                 <tr v-for="item in cart.carts" :key="item.id" class="border-bottom border-top">
                   <td class="border-0 align-middle">
-                      <button type="button" class="btn btn-outline-warning btn-sm" @click="deleteProduct(item)" :disabled="item.id === loadingItem">
-                          <i class="fas fa-spinner fa-pulse"></i>
-                          x
-                      </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-warning btn-sm"
+                      @click="deleteProduct(item)"
+                      :disabled="item.id === loadingItem"
+                    >
+                      x
+                    </button>
                   </td>
                   <td scope="row" class="border-0 px-0 font-weight-normal py-4">
-                    <img :src="item.product.imageUrl" alt="" style="width: 72px; height: 72px; object-fit: cover;">
+                    <img
+                    :src="item.product.imageUrl"
+                    alt="productImage"
+                    style="width: 72px; height: 72px; object-fit: cover;"
+                  >
                     <p class="mb-0 fw-bold ms-md-3 d-inline-block">{{ item.product.title }}</p>
                   </td>
                   <td class="border-0 align-middle">
                     <div class="input-group input-group-sm">
-                      <select name="" id="" class="form-control" v-model="item.qty" @change="updateProductQty(item)" :disabled="item.id === loadingItem">
+                      <select
+                        class="form-control"
+                        v-model="item.qty"
+                        @change="updateProductQty(item)"
+                        :disabled="item.id === loadingItem"
+                      >
                         <option :value="i" v-for="i in 20" :key="'cart' + i">{{ i }}</option>
                       </select>
                     </div>
                   </td>
-                  <td class="border-0 align-middle"><p class="mb-0 ms-auto">NT${{ item.total }}</p></td>
+                  <td class="border-0 align-middle">
+                    <p class="mb-0 ms-auto">NT${{ item.total }}</p>
+                  </td>
                 </tr>
               </template>
             </tbody>

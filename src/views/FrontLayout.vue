@@ -1,10 +1,4 @@
 <template>
-  <!-- <router-link to="/">Home</router-link> |
-  <router-link to="/about">About</router-link> |
-  <router-link to="/products">產品列表</router-link> |
-  <router-link to="/cart">購物車</router-link> |
-  <router-link to="/admin" class="btn btn-primary btn-sm">登入後台</router-link>
-  <hr> -->
   <!-- navbar -->
   <div class="container">
     <div class="row justify-content-center">
@@ -15,7 +9,7 @@
           <div v-if="showElement">
             <div class="dropdown">
               <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="../../public/image/dropdown.png" alt="">
+                <img src="../../public/image/dropdown.png" alt="dropdownImage">
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li class="ps-2">
@@ -28,7 +22,9 @@
                   <router-link to="/about" class="nav-item nav-link">關於我們</router-link>
                 </li>
                 <li class="ps-2">
-                  <router-link to="/cart" class="nav-item nav-link"><img src="../../public/image/cart.png" alt="cart"></router-link>
+                  <router-link to="/cart" class="nav-item nav-link">
+                    <img src="../../public/image/cart.png" alt="cart">
+                  </router-link>
                 </li>
               </ul>
             </div>
@@ -38,14 +34,16 @@
               <router-link to="/products" class="nav-item nav-link me-4">商品列表</router-link>
               <router-link to="/articles" class="nav-item nav-link me-4">文章介紹</router-link>
               <router-link to="/about" class="nav-item nav-link me-4">關於我們</router-link>
-              <router-link to="/cart" class="nav-item nav-link"><img src="../../public/image/cart.png" alt="cart"></router-link>
+              <router-link to="/cart" class="nav-item nav-link">
+                <img src="../../public/image/cart.png" alt="cart">
+              </router-link>
             </div>
           </div>
         </nav>
       </div>
     </div>
   </div>
-  <router-view/>
+  <RouterView />
   <!-- footer -->
   <div class="bg-dark py-5">
     <div class="container">
@@ -60,10 +58,18 @@
             <!-- first list -->
             <div class="col-md-2 mt-md-0 mt-4">
               <ul class="list-unstyled text-white mb-1 d-flex flex-md-column justify-content-md-start justify-content-center">
-                <li class="mb-2 mx-md-0 mx-3"><router-link to="/products" class="text-white">商品列表</router-link></li>
-                <li class="mb-2 mx-md-0 mx-3">文章介紹</li>
-                <li class="mb-2 mx-md-0 mx-3"><router-link to="/about" class="text-white">關於我們</router-link></li>
-                <li class="mb-2 mx-md-0 mx-3"><router-link to="/admin">後台登入</router-link></li>
+                <li class="mb-2 mx-md-0 mx-sm-3 mx-1">
+                  <router-link to="/products" class="text-white text-nowrap">商品列表</router-link>
+                </li>
+                <li class="mb-2 mx-md-0 mx-sm-3 mx-1">
+                  <router-link to="/articles" class="text-white text-nowrap">文章介紹</router-link>
+                </li>
+                <li class="mb-2 mx-md-0 mx-sm-3 mx-1">
+                  <router-link to="/about" class="text-white text-nowrap">關於我們</router-link>
+                </li>
+                <li class="mb-2 mx-md-0 mx-sm-3 mx-1">
+                  <router-link to="/admin" class="text-nowrap">後台登入</router-link>
+                </li>
               </ul>
             </div>
             <!-- second list -->
@@ -78,9 +84,36 @@
             <div class="col-md-4">
               <div class="d-flex flex-column justify-content-between align-items-md-end align-items-center text-white">
                 <ul class="d-flex list-unstyled mb-0 mt-md-0 mt-4 flex-wrap">
-                  <li><a href="#" class="text-white mx-2"><img src="../../public/image/fb.png" alt="facebook" class="bg-white rounded-circle border border-5" style="height: 45px;"></a></li>
-                  <li><a href="#" class="text-white mx-2"><img src="../../public/image/linkedin.svg" alt="linkedlin" class="bg-white rounded-circle border border-5" style="height: 45px;"></a></li>
-                  <li><a href="#" class="text-white mx-2"><img src="../../public/image/ig.png" alt="instagram" class="bg-white rounded-circle border border-5" style="height: 45px;"></a></li>
+                  <li>
+                    <a href="#" class="text-white mx-2">
+                      <img
+                        src="../../public/image/fb.png"
+                        alt="facebook"
+                        class="bg-white rounded-circle border border-5"
+                        style="height: 45px;"
+                      >
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="text-white mx-2">
+                      <img
+                        src="../../public/image/linkedin.svg"
+                        alt="linkedlin"
+                        class="bg-white rounded-circle border border-5"
+                        style="height: 45px;"
+                      >
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="text-white mx-2">
+                      <img
+                        src="../../public/image/ig.png"
+                        alt="instagram"
+                        class="bg-white rounded-circle border border-5"
+                        style="height: 45px;"
+                      >
+                    </a>
+                  </li>
                 </ul>
                 <div class="d-flex flex-column align-items-md-end align-items-center mt-md-0 mt-4">
                   <p class="mb-0">Copyright©  2023 盒玩，何玩？</p>

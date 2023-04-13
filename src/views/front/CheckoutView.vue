@@ -7,10 +7,15 @@
     </div>
     <div class="row flex-row-reverse justify-content-center pb-5">
       <div class="col-md-4">
-        <LoadingView v-model:active="isLoading" class="mb-3"></LoadingView>
+        <LoadingView v-model:active="isLoading" class="mb-3" />
         <div class="border p-4 mb-4">
           <div class="d-flex mt-2" v-for="item in cart.carts" :key="item.id">
-            <img :src="item.product.imageUrl" alt="" class="me-2" style="width: 48px; height: 48px; object-fit: cover">
+            <img
+              :src="item.product.imageUrl"
+              alt="productImage"
+              class="me-2"
+              style="width: 48px; height: 48px; object-fit: cover"
+            >
             <div class="w-100">
               <div class="d-flex justify-content-between">
                 <p class="mb-0 fw-bold">{{ item.product.title }}</p>
@@ -42,31 +47,69 @@
         <FormView ref="form" v-slot="{ errors }" @submit="createOrder">
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <FieldView id="email" name="email" type="email" class="form-control"
-            :class="{ 'is-invalid': errors['email'] }" placeholder="請輸入 Email" rules="email|required" v-model="form.user.email"></FieldView>
-            <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
+            <FieldView
+              id="email"
+              name="email"
+              type="email"
+              class="form-control"
+              :class="{ 'is-invalid': errors['email'] }"
+              placeholder="請輸入 Email"
+              rules="email|required"
+              v-model="form.user.email"
+            />
+            <ErrorMessage name="email" class="invalid-feedback" />
           </div>
           <div class="mb-3">
             <label for="name" class="form-label">收件人姓名</label>
-            <FieldView id="name" name="姓名" type="text" class="form-control"
-            :class="{ 'is-invalid': errors['姓名'] }" placeholder="請輸入姓名" rules="required" v-model="form.user.name"></FieldView>
-            <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
+            <FieldView
+              id="name"
+              name="姓名"
+              type="text"
+              class="form-control"
+              :class="{ 'is-invalid': errors['姓名'] }"
+              placeholder="請輸入姓名"
+              rules="required"
+              v-model="form.user.name"
+            />
+            <ErrorMessage name="姓名" class="invalid-feedback" />
           </div>
           <div class="mb-3">
             <label for="tel" class="form-label">收件人電話</label>
-            <FieldView id="tel" name="電話" type="text" class="form-control"
-            :class="{ 'is-invalid': errors['電話'] }" placeholder="請輸入電話" rules="required|min:8|max:10" v-model="form.user.tel"></FieldView>
-            <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
+            <FieldView
+              id="tel"
+              name="電話"
+              type="text"
+              class="form-control"
+              :class="{ 'is-invalid': errors['電話'] }"
+              placeholder="請輸入電話"
+              rules="required|min:8|max:10"
+              v-model="form.user.tel"
+            />
+            <ErrorMessage name="電話" class="invalid-feedback" />
           </div>
           <div class="mb-3">
             <label for="address" class="form-label">收件人地址</label>
-            <FieldView id="address" name="地址" type="text" class="form-control"
-            :class="{ 'is-invalid': errors['地址'] }" placeholder="請輸入地址" rules="required" v-model="form.user.address"></FieldView>
-            <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
+            <FieldView
+              id="address"
+              name="地址"
+              type="text"
+              class="form-control"
+              :class="{ 'is-invalid': errors['地址'] }"
+              placeholder="請輸入地址"
+              rules="required"
+              v-model="form.user.address"
+            />
+            <ErrorMessage name="地址" class="invalid-feedback" />
           </div>
           <div class="mb-3">
             <label for="message" class="form-label">留言</label>
-            <textarea id="message" class="form-control" cols="30" rows="10" v-model="form.message"></textarea>
+            <textarea
+              id="message"
+              class="form-control"
+              cols="30"
+              rows="10"
+              v-model="form.message"
+            />
           </div>
           <div class="text-end">
             <button type="submit" class="btn btn-primary text-nowrap">送出訂單</button>
@@ -125,6 +168,7 @@ export default {
         .then(res => {
           this.isLoading = false
           this.$refs.form.resetForm()
+          this.form.message = ''
           this.getCart()
           Swal.fire({
             icon: 'success',

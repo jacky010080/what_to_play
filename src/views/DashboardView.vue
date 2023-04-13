@@ -7,20 +7,16 @@
         <router-link to="/">回到前台</router-link> |
         <button type="button" class="btn btn-warning btn-sm" @click.prevent="logout">登出</button>
         <hr>
-        <RouterView></RouterView>
+        <RouterView />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { RouterView } from 'vue-router'
 const { VITE_API } = import.meta.env
 
 export default {
-  components: {
-    RouterView
-  },
   methods: {
     logout () {
       document.cookie = `hexToken=; expires=${new Date()};`

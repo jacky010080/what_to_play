@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <LoadingView v-model:active="isLoading"></LoadingView>
+    <LoadingView v-model:active="isLoading"/>
     <table class="table mt-4">
       <thead>
         <tr>
@@ -27,10 +27,13 @@
             <td>{{ order.total }}</td>
             <td>
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox"
-                id="`paidSwitch_${order.id}`"
-                v-model="order.is_paid"
-                @change="updatePaidStatus(order)">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="`paidSwitch_${order.id}`"
+                  v-model="order.is_paid"
+                  @change="updatePaidStatus(order)"
+                >
               </div>
               <label class="form-check-label" for="`paidSwitch_${order.id}`">
                 <span v-if="order.is_paid">已付款</span>
@@ -39,14 +42,18 @@
             </td>
             <td>
               <div class="btn-group">
-              <button type="button"
-              @click="openModal(order)"
-              class="btn btn-outline-primary btn-sm">
+              <button
+                type="button"
+                @click="openModal(order)"
+                class="btn btn-outline-primary btn-sm text-nowrap"
+              >
                 檢視
               </button>
-              <button type="button"
-              @click="openDelModal(order)"
-              class="btn btn-outline-warning btn-sm">
+              <button
+                type="button"
+                @click="openDelModal(order)"
+                class="btn btn-outline-warning btn-sm text-nowrap"
+              >
                 刪除
               </button>
             </div>
@@ -55,18 +62,18 @@
         </template>
       </tbody>
     </table>
-    <PaginationView :pages="pagination" @emit-page="getOrders"></PaginationView>
+    <PaginationView :pages="pagination" @emit-page="getOrders" />
   </div>
   <OrderModal
     ref="orderModal"
     :order="selectOrder"
     @update-order="updatePaidStatus"
-  ></OrderModal>
+  />
   <DeleteModal
     ref="delModal"
     :item="selectOrder"
     @delete="deleteOrder"
-  ></DeleteModal>
+  />
 </template>
 
 <script>

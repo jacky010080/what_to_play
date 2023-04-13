@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <LoadingView v-model:active="isLoading"></LoadingView>
+    <LoadingView v-model:active="isLoading" />
     <div class="text-end mt-4">
       <button class="btn btn-primary" @click="openModal('new')">
         建立新的產品
@@ -48,19 +48,19 @@
         </tr>
       </tbody>
     </table>
-    <PaginationView :pages="page" @emit-page="getData"></PaginationView>
+    <PaginationView :pages="page" @emit-page="getData" />
   </div>
-  <!-- 新增||編輯Modal -->
   <ProductModal
     ref="productModal"
     :is-new="isNew"
     :product="tempProduct"
     @update-product="updateProduct"
-  >
-  </ProductModal>
-  <!-- 刪除商品Modal -->
-  <DeleteModal ref="delModal" :item="tempProduct" @delete="deleteProduct">
-  </DeleteModal>
+  />
+  <DeleteModal
+    ref="delModal"
+    :item="tempProduct"
+    @delete="deleteProduct"
+  />
 </template>
 
 <script>

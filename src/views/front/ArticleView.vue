@@ -1,14 +1,14 @@
 <template>
   <div class="container my-5">
     <div class="row justify-content-center">
-      <div class="col-10">
+      <div class="col-md-10">
         <div class="row">
-          <div class="col-6 text-nowrap my-2">
+          <div class="col-md-6 text-nowrap my-2">
             <h3>{{ article.title }}</h3>
           </div>
         </div>
         <div>
-          <img :src="article.image" class="d-block w-100 mb-5" alt="...">
+          <img :src="article.image" class="d-block w-100 mb-5" alt="articleImage">
         </div>
         <div class="fs-4">
           <p>{{ article.description }}</p>

@@ -12,7 +12,7 @@
           <h5 id="productModalLabel" class="modal-title">
             <span>訂單明細</span>
           </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
         </div>
         <div class="modal-body">
           <div class="row">

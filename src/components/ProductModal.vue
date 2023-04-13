@@ -13,7 +13,7 @@
             <span v-if="isNew">新增產品</span>
             <span v-else>編輯產品</span>
           </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
         </div>
         <div class="modal-body">
           <div class="row">
@@ -46,32 +46,26 @@
               <img class="img-fluid" :src="selectProduct.imageUrl" />
 
               <div class="mt-5" v-if="Array.isArray(selectProduct.imagesUrl)">
-                <div v-for="(imgUrl, key) in selectProduct.imagesUrl"
-                    class="mb-3"
-                    :key="key"
-                >
+                <div v-for="(imgUrl, key) in selectProduct.imagesUrl" class="mb-3" :key="key">
                   <div class="mb-3">
                     <label for="imgUrl" class="form-label">圖片網址</label>
-                    <input type="url"
-                          class="form-control mb-2"
-                          placeholder="請輸入圖片連結"
-                          v-model="selectProduct.imagesUrl[key]
-                        ">
+                    <input
+                      type="url"
+                      class="form-control mb-2"
+                      placeholder="請輸入圖片連結"
+                      v-model="selectProduct.imagesUrl[key]
+                    ">
                   </div>
-                  <img class="img-fluid" :src="imgUrl">
+                  <img class="img-fluid" :src="imgUrl" ref="商品圖片">
                   <!-- 多圖 -->
-                  <button class="btn btn-outline-danger btn-sm d-block w-100"
-                          @click="selectProduct.imagesUrl.splice(key, 1)"
-                  >
+                  <button class="btn btn-outline-danger btn-sm d-block w-100" @click="selectProduct.imagesUrl.splice(key, 1)">
                     刪除圖片
                   </button>
                 </div>
 
                 <div
                   v-if="!selectProduct.imagesUrl.length || selectProduct.imagesUrl.at(-1)">
-                  <button
-                    class="btn btn-outline-primary btn-sm d-block w-100" @click="selectProduct.imagesUrl.push('')"
-                  >
+                  <button class="btn btn-outline-primary btn-sm d-block w-100" @click="selectProduct.imagesUrl.push('')">
                     新增圖片
                   </button>
                 </div>
@@ -80,7 +74,8 @@
             <div class="col-sm-8">
               <div class="mb-3">
                 <label for="title" class="form-label">標題</label>
-                <input id="title"
+                <input
+                  id="title"
                   type="text"
                   class="form-control"
                   v-model="selectProduct.title"
@@ -91,7 +86,8 @@
               <div class="row">
                 <div class="mb-3 col-md-6">
                   <label for="category" class="form-label">分類</label>
-                  <input id="category"
+                  <input
+                    id="category"
                     type="text"
                     class="form-control"
                     v-model="selectProduct.category"
@@ -173,12 +169,15 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button"
+          <button
+            type="button"
             class="btn btn-outline-warning"
-            data-bs-dismiss="modal">
+            data-bs-dismiss="modal"
+          >
             取消
           </button>
-          <button type="button"
+          <button
+            type="button"
             class="btn btn-primary"
             @click="updateProduct"
           >
