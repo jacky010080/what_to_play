@@ -45,7 +45,7 @@
       </div>
     </div>
   </div>
-  <RouterView></RouterView>
+  <router-view/>
   <!-- footer -->
   <div class="bg-dark py-5">
     <div class="container">
