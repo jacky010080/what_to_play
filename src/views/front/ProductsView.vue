@@ -41,12 +41,12 @@
         <!-- product list -->
         <div class="col-md-8">
           <div class="row" v-if="this.category == ''">
-            <div class=" col-md-6 mb-4" v-for="product in products" :key="product.id">
+            <div class=" col-md-6 mb-3" v-for="product in products" :key="product.id">
               <div class="card mb-2 position-relative position-relative">
                 <router-link :to="`/product/${product.id}`">
                   <img
                     :src="product.imageUrl"
-                    class="card-img-top rounded-0"
+                    class="card-img-top rounded"
                     alt="productImage"
                     style="max-height: 150px;object-fit: cover;object-position: top center;"
                   >
