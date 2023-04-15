@@ -65,7 +65,7 @@
               </a>
             </div>
             <!-- first list -->
-            <div class="col-md-2 mt-md-0 mt-4">
+            <div class="col-md-2 mt-md-0 mt-4 px-0">
               <ul class="list-unstyled text-white mb-1 d-flex flex-md-column justify-content-md-start justify-content-center">
                 <li class="mb-2 mx-md-0 mx-sm-3 mx-1">
                   <router-link to="/products" class="text-white text-nowrap">商品列表</router-link>
@@ -82,15 +82,25 @@
               </ul>
             </div>
             <!-- second list -->
-            <div class="col-md-2 mt-md-0 mt-4">
+            <div class="col-md-2 mt-md-0 mt-4 px-0">
               <ul class="list-unstyled text-white mb-1 d-flex flex-column align-items-md-start align-items-center">
                 <li class="mb-2">聯絡我們</li>
-                <li class="mb-2">123456789@gmail.com</li>
-                <li class="mb-2">(02) 1234-5678</li>
+                <li class="mb-2">
+                  <a href="mailto:jacky010080@gmail.com" class="d-flex align-items-center text-light">
+                    <img src="../../public/image/email.png" alt="email" class="me-2" style="max-height: 15px;">
+                    jacky010080@gmail.com
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a href="tel:(02) 1234-5678" class="d-flex align-items-center text-light">
+                    <img src="../../public/image/phone.png" alt="phone" class="me-2" style="max-height: 15px;">
+                    (02) 1234-5678
+                  </a>
+                </li>
               </ul>
             </div>
             <!-- contact -->
-            <div class="col-md-4">
+            <div class="col-md-4 px-0">
               <div class="d-flex flex-column justify-content-between align-items-md-end align-items-center text-white">
                 <ul class="d-flex list-unstyled mb-0 mt-md-0 mt-4 flex-wrap">
                   <li>
@@ -124,7 +134,7 @@
                     </a>
                   </li>
                 </ul>
-                <div class="d-flex flex-column align-items-md-end align-items-center mt-md-0 mt-4">
+                <div class="d-flex flex-column align-items-md-end align-items-center mt-4">
                   <p class="mb-0">Copyright©  2023 盒玩，何玩？</p>
                   <p class="mb-0">所有圖片為個人練習使用，無商業用途</p>
                 </div>
