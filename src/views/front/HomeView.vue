@@ -38,14 +38,14 @@
       <!-- product_list -->
       <div class="col-10 d-flex flex-column align-items-center mb-5 px-0">
         <h2 class="text-center fw-normal">商品一覽</h2>
-        <div class="container px-2">
+        <div class="container px-md-2 px-0">
           <div class="row justify-content-between my-4">
-            <div class=" col-md-4 mb-1 px-1" v-for="product in products" :key="product.id">
+            <div class=" col-md-4 mb-1 px-md-1 px-0" v-for="product in products" :key="product.id">
               <div class="card mb-1 position-relative position-relative">
                 <router-link :to="`/product/${product.id}`">
                   <img
                     :src="product.imageUrl"
-                    class="card-img-top rounded"
+                    class="card-img-top rounded-top"
                     alt="productImage"
                     style="height: 150px;object-fit: cover;object-position: top center;"
                   >

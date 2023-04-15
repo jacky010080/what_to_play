@@ -45,6 +45,15 @@
   </div>
   <RouterView />
   <!-- footer -->
+  <div class="bg-primary position-relative" style="height: 5px;">
+    <button
+      type="button"
+      @click="toTop()"
+      class="bg-primary rounded-circle border-0 position-absolute top-50 end-0 translate-middle-y me-6 px-2 py-1"
+    >
+      <img src="../../public/image/scrollTop.png" alt="arrow" class="mb-1">
+    </button>
+  </div>
   <div class="bg-dark py-5">
     <div class="container">
       <div class="row justify-content-center">
@@ -155,6 +164,9 @@ export default {
       // 視窗寬度改變時，更新 showElement 的值
       this.windowWidth = window.innerWidth
       this.showElement = this.windowWidth < 768
+    },
+    toTop () {
+      window.scrollTo(0, 0)
     }
   }
 }

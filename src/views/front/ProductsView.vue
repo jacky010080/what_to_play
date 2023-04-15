@@ -46,7 +46,7 @@
                 <router-link :to="`/product/${product.id}`">
                   <img
                     :src="product.imageUrl"
-                    class="card-img-top rounded"
+                    class="card-img-top rounded-top"
                     alt="productImage"
                     style="max-height: 150px;object-fit: cover;object-position: top center;"
                   >
