@@ -36,20 +36,32 @@
           <div class="col-6">
             <div class="input-group my-3 bg-light rounded">
               <div class="input-group-prepend">
-                <button class="btn btn-outline-dark border-0 py-2" type="button" id="button-addon1">
-                  <i class="fas fa-minus">-</i>
+                <button
+                  class="btn btn-outline-dark border-0 py-2"
+                  type="button"
+                  id="button-addon1"
+                  @click.prevent="qtyMinus()"
+                  :disabled="product.qty <= 1"
+                >
+                  <i class="fas fa-minus fs-5"> - </i>
                 </button>
               </div>
               <input
-                type="text"
+                type="number"
                 class="form-control border-0 text-center my-auto shadow-none bg-light"
                 aria-label="Example text with button addon"
                 aria-describedby="button-addon1"
-                value="1"
-              >
+                v-model="product.qty"
+              />
               <div class="input-group-append">
-                <button class="btn btn-outline-dark border-0 py-2" type="button" id="button-addon2">
-                  <i class="fas fa-plus">+</i>
+                <button
+                  class="btn btn-outline-dark border-0 py-2"
+                  type="button"
+                  id="button-addon2"
+                  @click.prevent="qtyPlus()"
+                  :disabled="product.qty >= 20"
+                >
+                  <i class="fas fa-plus fs-5"> + </i>
                 </button>
               </div>
             </div>
@@ -138,6 +150,7 @@ export default {
         .then(res => {
           this.isLoading = false
           this.product = res.data.product
+          this.product.qty = 1
           this.getProducts()
         })
         .catch(err => {
@@ -177,12 +190,13 @@ export default {
     addToCart (id) {
       const data = {
         product_id: id,
-        qty: 1
+        qty: this.product.qty
       }
       this.isLoading = true
       this.$http.post(`${VITE_API}/v2/api/${VITE_APIPATH}/cart`, { data })
         .then(res => {
           this.isLoading = false
+          this.product.qty = 1
           Swal.fire({
             icon: 'success',
             title: res.data.message,
@@ -203,6 +217,12 @@ export default {
       this.$router.push(`/product/${productId}`).then(() => {
         location.reload() // 自動重新加載頁面
       })
+    },
+    qtyPlus () {
+      this.product.qty++
+    },
+    qtyMinus () {
+      this.product.qty--
     }
   },
   mounted () {
@@ -210,3 +230,11 @@ export default {
   }
 }
 </script>
+
+<style>
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>

@@ -175,6 +175,7 @@ export default {
             title: res.data.message,
             confirmButtonText: 'OK'
           })
+          this.$router.push('/')
         })
         .catch(err => {
           this.isLoading = false

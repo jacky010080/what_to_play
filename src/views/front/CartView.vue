@@ -2,7 +2,14 @@
   <div class="container mt-5">
     <LoadingView v-model:active="isLoading"></LoadingView>
     <div class="mt-3">
-      <button type="button" class="btn btn-outline-warning" @click="deleteAllProduct()">清空購物車</button>
+      <button
+        type="button"
+        class="btn btn-outline-warning"
+        @click="deleteAllProduct()"
+        :disabled="!order_open"
+      >
+        清空購物車
+      </button>
       <h3 class="mt-3 mb-4">購物車</h3>
       <div class="row">
         <div class="col-md-8">
