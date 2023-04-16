@@ -19,7 +19,7 @@
             <div class="w-100">
               <div class="d-flex justify-content-between">
                 <p class="mb-0 fw-bold">{{ item.product.title }}</p>
-                <p class="mb-0">NT${{ item.total }}</p>
+                <p class="mb-0 text-end">NT${{ item.total.toLocaleString() }}</p>
               </div>
               <p class="mb-0 fw-bold">x{{ item.qty }}</p>
             </div>
@@ -28,7 +28,7 @@
             <tbody>
               <tr>
                 <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">Subtotal</th>
-                <td class="text-end border-0 px-0 pt-4">NT${{ cart.total }}</td>
+                <td class="border-0 px-0 pt-4 text-end">NT${{ cart.total }}</td>
               </tr>
               <tr>
                 <th scope="row" class="border-0 px-0 pt-0 pb-4 font-weight-normal">Payment</th>
@@ -38,7 +38,7 @@
           </table>
           <div class="d-flex justify-content-between mt-4">
             <p class="mb-0 h4 fw-bold">Total</p>
-            <p class="mb-0 h4 fw-bold">NT${{ cart.total }}</p>
+            <p class="mb-0 h4 fw-bold text-end">NT${{ cart.total }}</p>
           </div>
         </div>
       </div>
@@ -150,6 +150,7 @@ export default {
         .then(res => {
           this.isLoading = false
           this.cart = res.data.data
+          this.cart.total = this.cart.total.toLocaleString()
         })
         .catch(err => {
           this.isLoading = false

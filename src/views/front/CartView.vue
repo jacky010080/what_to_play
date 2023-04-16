@@ -19,7 +19,7 @@
                 <th></th>
                 <th scope="col" class="border-0 ps-0">品名</th>
                 <th scope="col" class="border-0">數量</th>
-                <th scope="col" class="border-0">單價</th>
+                <th scope="col" class="border-0 text-end">總計</th>
               </tr>
             </thead>
             <tbody>
@@ -55,7 +55,7 @@
                       </select>
                     </div>
                   </td>
-                  <td class="border-0 align-middle">
+                  <td class="border-0 align-middle text-end">
                     <p class="mb-0 ms-auto">NT${{ item.total.toLocaleString() }}</p>
                   </td>
                 </tr>
@@ -71,7 +71,11 @@
               <tbody>
                 <tr>
                   <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">Subtotal</th>
-                  <td class="text-end border-0 px-0 pt-4">NT${{ cart.total }}</td>
+                  <!-- <td class="text-end border-0 px-0 pt-4">NT${{ cart.total }}</td> -->
+                </tr>
+                <tr v-for="item in cart.carts" :key="item.id">
+                  <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">{{ item.product.title }}</th>
+                  <td class="text-end border-0 px-0 pt-4">NT${{ item.total.toLocaleString() }}</td>
                 </tr>
               </tbody>
             </table>

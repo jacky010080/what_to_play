@@ -19,7 +19,7 @@
             </p>
           </div>
           <div class="col-md-2 col-5">
-            <img src="../../../public/image/welcomeRight.png" alt="welcomeImage" class="mt-5 pt-md-5 pt-2" style="max-width: 65%;">
+            <img src="../../../public/image/welcomeRight.png" alt="welcomeImage" class="mt-5 pt-md-5 pt-2 ps-md-0 ps-4" style="max-width: 65%;">
           </div>
         </div>
       </div>
