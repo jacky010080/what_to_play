@@ -1,1 +1,0 @@
-import{_ as o,o as t,a as n,F as s,b as e}from"./index-c29256c3.js";const c={},a=e("h1",null,"404",-1),r=e("p",null,"找不到此頁面～",-1);function _(l,d){return t(),n(s,null,[a,r],64)}const f=o(c,[["render",_]]);export{f as default};
