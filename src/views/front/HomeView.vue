@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
       <!-- welcome -->
       <div class="col-md-10">
-        <div class="row justify-content-center align-items-center my-5">
-          <div class="col-md-2">
-            <img src="../../../public/image/welcomeLeft.png" alt="welcomeImage" style="max-height: 220px">
+        <div class="row flex-md-row flex-column justify-content-md-between align-items-center my-5">
+          <div class="col-md-2 col-4 ps-0">
+            <img src="../../../public/image/welcomeLeft.png" alt="welcomeImage" style="max-height: 220px;">
           </div>
           <div class="col-md-8 text-center">
             <div class="d-flex justify-content-center align-items-center">
@@ -18,13 +18,13 @@
               我們專門銷售各式盒玩、扭蛋、模型，我們提供的服務讓各個年齡層的玩具愛好者都可以探索、了解和購買最新和最棒的玩具收藏。
             </p>
           </div>
-          <div class="col-md-2">
-            <img src="../../../public/image/welcomeRight.png" alt="welcomeImage" class="mt-5 pt-5" style="max-width: 65%;">
+          <div class="col-md-2 col-5">
+            <img src="../../../public/image/welcomeRight.png" alt="welcomeImage" class="mt-5 pt-md-5 pt-2" style="max-width: 65%;">
           </div>
         </div>
       </div>
       <!-- article -->
-      <div class="col-md-10 my-5" style="background: center center; background-size: cover; height: 100%;" :style="{ backgroundImage: `url(${articleBackgroundPath})` }">
+      <div class="col-md-10 my-md-5" style="background: center center; background-size: cover; height: 100%;" :style="{ backgroundImage: `url(${articleBackgroundPath})` }">
         <div class="row justify-content-end">
           <div class="col-md-5 text-white bg-dark" style="height: 380px; --bs-bg-opacity: .6;">
             <div class="mx-md-4 mt-4">
@@ -36,7 +36,7 @@
         </div>
       </div>
       <!-- product_list -->
-      <div class="col-10 d-flex flex-column align-items-center mb-5 px-0">
+      <div class="col-10 d-flex flex-column align-items-center my-md-5 my-3 px-0">
         <h2 class="text-center fw-normal">商品一覽</h2>
         <div class="container px-md-2 px-0">
           <div class="row justify-content-between my-4">
@@ -56,9 +56,9 @@
                     <h4 class="mt-3 fs-5">{{ product.title }}</h4>
                   </router-link>
                   <p class="card-text mb-0">
-                    NT${{ product.price }}
+                    NT${{ product.price.toLocaleString() }}
                     <span class="text-muted ">
-                      <del>NT${{ product.origin_price }}</del>
+                      <del>NT${{ product.origin_price.toLocaleString() }}</del>
                     </span>
                   </p>
                   <button
@@ -73,7 +73,7 @@
             </div>
           </div>
         </div>
-        <router-link to="/products" class="btn btn-primary rounded-pill text-white text-center mt-4 text-nowrap px-5">查看更多</router-link>
+        <router-link to="/products" class="btn btn-primary rounded-pill text-white text-center mt-md-4 mt-2 text-nowrap px-5">查看更多</router-link>
       </div>
     </div>
   </div>
@@ -102,21 +102,17 @@ export default {
   data () {
     return {
       products: [],
-      isLoading: false,
       articleBackgroundPath,
       knowMorePath
     }
   },
   methods: {
     getProducts (page = 1) {
-      this.isLoading = true
       this.$http.get(`${VITE_API}/v2/api/${VITE_APIPATH}/products/?page=${page}`)
         .then(res => {
-          this.isLoading = false
           this.products = res.data.products
         })
         .catch(err => {
-          this.isLoading = false
           Swal.fire({
             icon: 'error',
             title: `錯誤 ${err.response.status}`,
@@ -130,18 +126,19 @@ export default {
         product_id: id,
         qty: 1
       }
-      this.isLoading = true
       this.$http.post(`${VITE_API}/v2/api/${VITE_APIPATH}/cart`, { data })
         .then(res => {
-          this.isLoading = false
-          Swal.fire({
+          Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000
+          }).fire({
             icon: 'success',
-            title: res.data.message,
-            confirmButtonText: 'OK'
+            title: res.data.message
           })
         })
         .catch(err => {
-          this.isLoading = false
           Swal.fire({
             icon: 'error',
             title: `錯誤 ${err.response.status}`,

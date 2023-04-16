@@ -56,7 +56,7 @@
                     </div>
                   </td>
                   <td class="border-0 align-middle">
-                    <p class="mb-0 ms-auto">NT${{ item.total }}</p>
+                    <p class="mb-0 ms-auto">NT${{ item.total.toLocaleString() }}</p>
                   </td>
                 </tr>
               </template>
@@ -109,6 +109,7 @@ export default {
         .then(res => {
           this.isLoading = false
           this.cart = res.data.data
+          this.cart.total = this.cart.total.toLocaleString()
           if (this.cart.carts.length > 0) {
             this.order_open = true
           } else {

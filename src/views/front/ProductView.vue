@@ -108,9 +108,9 @@
                     <h4 class="mb-0 mt-3 fs-5">{{ item.title }}</h4>
                   </router-link>
                   <p class="card-text mb-0">
-                    NT${{ item.price }}
+                    NT${{ item.price.toLocaleString() }}
                     <span class="text-muted">
-                      <del>NT${{ item.origin_price }}</del>
+                      <del>NT${{ item.origin_price.toLocaleString() }}</del>
                     </span>
                   </p>
                 </div>
@@ -151,6 +151,8 @@ export default {
           this.isLoading = false
           this.product = res.data.product
           this.product.qty = 1
+          this.product.origin_price = this.product.origin_price.toLocaleString()
+          this.product.price = this.product.price.toLocaleString()
           this.getProducts()
         })
         .catch(err => {
@@ -197,10 +199,14 @@ export default {
         .then(res => {
           this.isLoading = false
           this.product.qty = 1
-          Swal.fire({
+          Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000
+          }).fire({
             icon: 'success',
-            title: res.data.message,
-            confirmButtonText: 'OK'
+            title: res.data.message
           })
         })
         .catch(err => {

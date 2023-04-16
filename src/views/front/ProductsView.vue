@@ -56,9 +56,9 @@
                     <h4 class="mt-3 fs-5">{{ product.title }}</h4>
                   </router-link>
                   <p class="card-text mb-0">
-                    NT${{ product.price }}
+                    NT${{ product.price.toLocaleString() }}
                     <span class="text-muted">
-                      <del>NT${{ product.origin_price }}</del>
+                      <del>NT${{ product.origin_price.toLocaleString() }}</del>
                     </span>
                   </p>
                   <button
@@ -159,10 +159,14 @@ export default {
       this.$http.post(`${VITE_API}/v2/api/${VITE_APIPATH}/cart`, { data })
         .then(res => {
           this.isLoading = false
-          Swal.fire({
+          Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000
+          }).fire({
             icon: 'success',
-            title: res.data.message,
-            confirmButtonText: 'OK'
+            title: res.data.message
           })
         })
         .catch(err => {
