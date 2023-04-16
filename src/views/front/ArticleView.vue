@@ -37,7 +37,6 @@ export default {
         .then(res => {
           this.isLoading = false
           this.article = res.data.article
-          console.log(this.article)
         })
         .catch(err => {
           this.isLoading = false

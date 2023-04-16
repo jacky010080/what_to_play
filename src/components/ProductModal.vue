@@ -190,6 +190,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 import { Modal } from 'bootstrap'
 
 const { VITE_API, VITE_APIPATH } = import.meta.env
@@ -234,7 +235,12 @@ export default {
         })
         .catch(err => {
           this.status.fileUploading = false
-          console.log(err)
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
         })
     },
     updateProduct () {

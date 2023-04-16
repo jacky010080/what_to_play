@@ -1,7 +1,7 @@
 <template>
-  <div class="container mt-5 pt-5">
-    <div class="row justify-content-center">
-      <form id="form" class="form-signin col-8 d-flex flex-column mt-5 mb-5" @submit.prevent="login">
+  <div class="container mt-6 pt-6">
+    <div class="row justify-content-center mt-6">
+      <form id="form" class="form-signin col-8 d-flex flex-column mt-6 mb-5" @submit.prevent="login">
           <div class="form-floating mb-4">
             <input
               type="email"
@@ -52,12 +52,7 @@ export default {
         .then((res) => {
           const { token, expired } = res.data
           document.cookie = `hexToken=${token}; expires=${new Date(expired)};`
-          this.$router.push('/admin/products')
-          Swal.fire({
-            icon: 'success',
-            title: res.data.message,
-            confirmButtonText: 'OK'
-          })
+          this.$router.push('/admin')
         })
         .catch((err) => {
           Swal.fire({

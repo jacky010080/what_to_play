@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 const { VITE_API } = import.meta.env
 
 export default {
@@ -27,13 +28,35 @@ export default {
       this.$http.defaults.headers.common.Authorization = token
       this.$http.post(`${VITE_API}api/user/check`)
         .then((res) => {
-          alert(`狀態是否登入：${res.data.success}`)
           if (!res.data.success) {
+            Swal.fire({
+              icon: 'error',
+              title: '登入失敗',
+              text: res.data.message,
+              confirmButtonText: 'OK'
+            })
             this.$router.push('/login')
+          } else {
+            Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 1500
+            }).fire({
+              icon: 'success',
+              title: '登入成功',
+              text: res.data.message
+            })
           }
         })
         .catch((err) => {
-          alert(err.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
+          this.$router.push('/login')
         })
     }
   },
