@@ -48,26 +48,29 @@
                     :src="product.imageUrl"
                     class="card-img-top rounded-top"
                     alt="productImage"
-                    style="max-height: 150px;object-fit: cover;object-position: top center;"
+                    style="height: 150px;object-fit: cover;object-position: top center;"
                   >
                 </router-link>
-                <div class="card-body pb-2 d-flex flex-column justify-content-between" style="height: 160px;">
+                <div class="card-body pb-2 d-flex flex-column justify-content-md-between" style="height: 140px;">
                   <router-link :to="`/product/${product.id}`">
                     <h4 class="mt-3 fs-5">{{ product.title }}</h4>
                   </router-link>
-                  <p class="card-text mb-0">
-                    NT${{ product.price.toLocaleString() }}
-                    <span class="text-muted">
-                      <del>NT${{ product.origin_price.toLocaleString() }}</del>
-                    </span>
-                  </p>
-                  <button
-                    type="button"
-                    class="btn btn-outline-primary btn-sm text-nowrap align-self-end"
-                    @click="addToCart(product.id)"
+                  <div class="card-text d-flex justify-content-between"
                   >
-                    加入購物車
-                  </button>
+                    <p>
+                      NT${{ product.price.toLocaleString() }}
+                      <span class="text-muted ">
+                        <del>NT${{ product.origin_price.toLocaleString() }}</del>
+                      </span>
+                    </p>
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary btn-md-sm text-nowrap align-self-end mt-4"
+                      @click="addToCart(product.id)"
+                    >
+                      加入購物車
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

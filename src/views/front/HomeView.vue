@@ -51,23 +51,26 @@
                   >
                 </router-link>
                 <i class="far fa-heart position-absolute text-light bg-danger rounded p-1" style="right: 5px; top: 5px">新品</i>
-                <div class="card-body pb-2 d-flex flex-column justify-content-between" style="height: 160px;">
+                <div class="card-body pb-2 d-flex flex-column justify-content-md-between" style="height: 120px;">
                   <router-link :to="`/product/${product.id}`">
-                    <h4 class="mt-3 fs-5">{{ product.title }}</h4>
+                    <h4 class="mt-2 fs-5">{{ product.title }}</h4>
                   </router-link>
-                  <p class="card-text mb-0">
-                    NT${{ product.price.toLocaleString() }}
-                    <span class="text-muted ">
-                      <del>NT${{ product.origin_price.toLocaleString() }}</del>
-                    </span>
-                  </p>
-                  <button
-                    type="button"
-                    class="btn btn-outline-primary btn-sm text-nowrap align-self-end"
-                    @click="addToCart(product.id)"
-                  >
-                    加入購物車
-                  </button>
+                  <div class="card-text d-flex justify-content-between"
+                  style="height: 50px;">
+                    <p>
+                      NT${{ product.price.toLocaleString() }}
+                      <span class="text-muted ">
+                        <del>NT${{ product.origin_price.toLocaleString() }}</del>
+                      </span>
+                    </p>
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary btn-md-sm text-nowrap align-self-end mt-4"
+                      @click="addToCart(product.id)"
+                    >
+                      加入購物車
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
