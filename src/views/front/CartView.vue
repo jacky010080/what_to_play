@@ -4,7 +4,7 @@
     <div class="mt-3">
       <button
         type="button"
-        class="btn btn-outline-warning"
+        class="btn btn-outline-warning rounded-0"
         @click="deleteAllProduct()"
         :disabled="!order_open"
       >
@@ -28,7 +28,7 @@
                   <td class="border-0 align-middle">
                     <button
                       type="button"
-                      class="btn btn-outline-warning btn-sm"
+                      class="btn btn-outline-warning btn-sm rounded-0"
                       @click="deleteProduct(item)"
                       :disabled="item.id === loadingItem"
                     >

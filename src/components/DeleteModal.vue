@@ -35,7 +35,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-danger"
+            class="btn btn-danger rounded-0"
             @click="$emit('delete')"
           >
             確認刪除
