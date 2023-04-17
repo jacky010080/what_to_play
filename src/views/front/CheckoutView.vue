@@ -82,7 +82,7 @@
               class="form-control"
               :class="{ 'is-invalid': errors['電話'] }"
               placeholder="請輸入電話"
-              rules="required|min:8|max:10"
+              :rules="isPhone"
               v-model="form.user.tel"
             />
             <ErrorMessage name="電話" class="invalid-feedback" />
@@ -187,6 +187,10 @@ export default {
             confirmButtonText: 'OK'
           })
         })
+    },
+    isPhone (value) {
+      const phoneNumber = /^(09)[0-9]{8}$/
+      return phoneNumber.test(value) ? true : '需要填寫正確的電話格式'
     }
   },
   mounted () {

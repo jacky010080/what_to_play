@@ -24,6 +24,7 @@
                 <li class="ps-2">
                   <router-link to="/cart" class="nav-item nav-link">
                     <img src="../../public/image/cart.png" alt="cart">
+                    <span class="badge rounded-circle bg-warning text-white">{{ cartLen }}</span>
                   </router-link>
                 </li>
               </ul>
@@ -36,6 +37,7 @@
               <router-link to="/about" class="nav-item nav-link me-4">關於我們</router-link>
               <router-link to="/cart" class="nav-item nav-link">
                 <img src="../../public/image/cart.png" alt="cart">
+                <span class="badge rounded-circle bg-warning text-white">{{ cartLen }}</span>
               </router-link>
             </div>
           </div>
@@ -151,15 +153,43 @@
 
 <script>
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import Swal from 'sweetalert2'
+const { VITE_API, VITE_APIPATH } = import.meta.env
 
 export default {
   data () {
     return {
+      cartLen: 0,
       showElement: false,
       windowWidth: 0
     }
   },
+  methods: {
+    getCart () {
+      this.$http.get(`${VITE_API}/v2/api/${VITE_APIPATH}/cart`)
+        .then(res => {
+          this.cartLen = res.data.data.carts.length
+        })
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: `錯誤 ${err.response.status}`,
+            text: err.response.data.message,
+            confirmButtonText: 'OK'
+          })
+        })
+    },
+    handleResize () {
+      // 視窗寬度改變時，更新 showElement 的值
+      this.windowWidth = window.innerWidth
+      this.showElement = this.windowWidth < 768
+    },
+    toTop () {
+      window.scrollTo(0, 0)
+    }
+  },
   mounted () {
+    this.getCart()
     // 取得視窗寬度
     this.windowWidth = window.innerWidth
     // 註冊 resize 事件監聽器
@@ -170,16 +200,6 @@ export default {
   beforeUnmount () {
     // 移除 resize 事件監聽器
     window.removeEventListener('resize', this.handleResize)
-  },
-  methods: {
-    handleResize () {
-      // 視窗寬度改變時，更新 showElement 的值
-      this.windowWidth = window.innerWidth
-      this.showElement = this.windowWidth < 768
-    },
-    toTop () {
-      window.scrollTo(0, 0)
-    }
   }
 }
 </script>
