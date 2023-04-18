@@ -4,7 +4,9 @@
     <div class="row justify-content-center">
       <div class="col-md-10">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <router-link to="/"><img src="../../public/image/logo1.png" class="h-100" alt="logo"></router-link>
+          <router-link to="/">
+            <img src="../../public/image/logo1.png" class="h-100" alt="logo">
+          </router-link>
           <!-- dropdown -->
           <div v-if="showElement">
             <div class="dropdown">
@@ -30,7 +32,7 @@
               </ul>
             </div>
           </div>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+          <div v-else class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav nav">
               <router-link to="/products" class="nav-item nav-link me-4">商品列表</router-link>
               <router-link to="/articles" class="nav-item nav-link me-4">文章介紹</router-link>
@@ -45,7 +47,7 @@
       </div>
     </div>
   </div>
-  <RouterView />
+  <RouterView @refreshCart="getCart" />
   <!-- footer -->
   <footer>
     <div class="bg-primary position-relative" style="height: 5px;">

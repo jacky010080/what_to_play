@@ -123,6 +123,7 @@ import Swal from 'sweetalert2'
 const { VITE_API, VITE_APIPATH } = import.meta.env
 
 export default {
+  emits: ['refreshCart'],
   data () {
     return {
       products: [],
@@ -176,6 +177,7 @@ export default {
             icon: 'success',
             title: res.data.message
           })
+          this.$emit('refreshCart')
         })
         .catch(err => {
           this.isLoading = false

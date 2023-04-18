@@ -18,6 +18,8 @@ import AllRules from '@vee-validate/rules'
 import { localize, setLocale } from '@vee-validate/i18n'
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 
+import { createPinia } from 'pinia'
+
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule])
 })
@@ -35,11 +37,14 @@ app.config.globalProperties.$filters = {
   currency
 }
 
+const pinia = createPinia()
+
 app.use(VueAxios, axios)
 app.use(router)
 app.component('LoadingView', Loading)
 app.component('FormView', Form)
 app.component('FieldView', Field)
 app.component('ErrorMessage', ErrorMessage)
+app.use(pinia)
 
 app.mount('#app')
