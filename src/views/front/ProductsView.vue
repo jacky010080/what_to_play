@@ -10,23 +10,23 @@
               </div>
               <div id="collapseOne" class="collapse show border-bottom" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="card-body py-0">
-                  <ul class="list-unstyled nav d-flex flex-column">
-                    <li class="nav-item">
+                  <ul class="list-unstyled nav d-flex flex-column align-items-center">
+                    <li class="nav-item text-md-start text-center">
                       <a href="#" class="nav-link py-2 d-block text-nowrap" @click.prevent="category = ''" >
                         全部
                       </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-md-start text-center">
                       <a href="#" class="nav-link py-2 d-block text-nowrap" @click.prevent="category = '盒玩'">
                         盒玩
                       </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-md-start text-center">
                       <a href="#" class="nav-link py-2 d-block text-nowrap" @click.prevent="category = '扭蛋'">
                         扭蛋
                       </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-md-start text-center">
                       <a href="#" class="nav-link py-2 d-block text-nowrap" @click.prevent="category = '模型'">
                         模型
                       </a>

@@ -7,15 +7,18 @@
             <router-link :to="`/article/${article.id}`">
               <img
                 :src="article.image"
-                class="card-img-top rounded-0"
+                class="card-img-top rounded-top"
                 alt="articleImage"
-                style="max-height: 200px;object-fit: cover;object-position: top center;"
+                style="max-height: 300px;object-fit: cover;object-position: top center;"
               >
             </router-link>
-            <div class="card-body my-2">
-              <h4 class="card-title ">
+            <div class="card-body mt-3 ms-2">
+              <h4 class="card-title mb-0">
                 <router-link :to="`/article/${article.id}`">{{ article.title }}</router-link>
               </h4>
+              <p class="text-muted">分類：
+                <span v-for="label in article.tag" :key="label" class="me-2">{{ label }}</span>
+              </p>
             </div>
           </div>
         </div>

@@ -2,10 +2,16 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-10">
-        <router-link to="/admin/products">後台產品列表</router-link> |
-        <router-link to="/admin/orders">後台訂單列表</router-link> |
-        <router-link to="/">回到前台</router-link> |
-        <button type="button" class="btn btn-warning btn-sm" @click.prevent="logout">登出</button>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+            <div class="navbar-nav nav">
+              <router-link to="/admin/products" class="nav-item nav-link me-4">產品列表</router-link>
+              <router-link to="/admin/orders" class="nav-item nav-link me-4">訂單列表</router-link>
+              <router-link to="/" class="nav-item nav-link me-4">回到前台</router-link>
+              <button type="button" class="btn btn-warning" @click.prevent="logout">登出</button>
+            </div>
+          </div>
+        </nav>
         <hr>
         <RouterView />
       </div>
