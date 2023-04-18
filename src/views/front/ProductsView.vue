@@ -12,22 +12,38 @@
                 <div class="card-body py-0">
                   <ul class="list-unstyled nav d-flex flex-column align-items-center">
                     <li class="nav-item text-md-start text-center">
-                      <a href="#" class="nav-link py-2 d-block text-nowrap" @click.prevent="category = ''" >
+                      <a href="#"
+                        class="nav-link py-2 d-block text-nowrap"
+                        :class="{ active: category === '' }"
+                        @click.prevent="category = ''"
+                      >
                         全部
                       </a>
                     </li>
                     <li class="nav-item text-md-start text-center">
-                      <a href="#" class="nav-link py-2 d-block text-nowrap" @click.prevent="category = '盒玩'">
+                      <a href="#"
+                        class="nav-link py-2 d-block text-nowrap"
+                        :class="{ active: category === '盒玩' }"
+                        @click.prevent="category = '盒玩'"
+                      >
                         盒玩
                       </a>
                     </li>
                     <li class="nav-item text-md-start text-center">
-                      <a href="#" class="nav-link py-2 d-block text-nowrap" @click.prevent="category = '扭蛋'">
+                      <a href="#"
+                        class="nav-link py-2 d-block text-nowrap"
+                        :class="{ active: category === '扭蛋' }"
+                        @click.prevent="category = '扭蛋'"
+                      >
                         扭蛋
                       </a>
                     </li>
                     <li class="nav-item text-md-start text-center">
-                      <a href="#" class="nav-link py-2 d-block text-nowrap" @click.prevent="category = '模型'">
+                      <a href="#"
+                        class="nav-link py-2 d-block text-nowrap"
+                        :class="{ active: category === '模型' }"
+                        @click.prevent="category = '模型'"
+                      >
                         模型
                       </a>
                     </li>
@@ -195,3 +211,10 @@ export default {
   }
 }
 </script>
+
+<style>
+  .nav-link.active {
+    color: black;
+    font-weight: bold;
+  }
+</style>
