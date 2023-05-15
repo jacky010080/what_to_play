@@ -143,10 +143,14 @@ export default {
           this.isLoading = false
           this.getCart()
           this.loadingItem = ''
-          Swal.fire({
+          Swal.mixin({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            timer: 2000
+          }).fire({
             icon: 'success',
-            title: res.data.message,
-            confirmButtonText: 'OK'
+            title: res.data.message
           })
         })
         .catch(err => {
@@ -168,10 +172,14 @@ export default {
           this.isLoading = false
           this.getCart()
           this.loadingItem = ''
-          Swal.fire({
-            icon: 'success',
-            title: res.data.message,
-            confirmButtonText: 'OK'
+          Swal.mixin({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            timer: 2000
+          }).fire({
+            icon: 'warning',
+            title: `${res.data.message}該商品`
           })
           this.$emit('refreshCart')
         })
@@ -191,10 +199,14 @@ export default {
         .then(res => {
           this.isLoading = false
           this.getCart()
-          Swal.fire({
-            icon: 'success',
-            title: res.data.message,
-            confirmButtonText: 'OK'
+          Swal.mixin({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            timer: 2000
+          }).fire({
+            icon: 'warning',
+            title: `${res.data.message}全部商品`
           })
           this.$emit('refreshCart')
         })

@@ -47,7 +47,7 @@
       </div>
     </div>
   </div>
-  <RouterView @refreshCart="getCart" />
+  <RouterView @refreshCart="getCart" @toTop="toTop"/>
   <!-- footer -->
   <footer>
     <div class="bg-primary position-relative" style="height: 5px;">
