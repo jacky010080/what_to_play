@@ -47,7 +47,7 @@
                     :src="product.imageUrl"
                     class="card-img-top rounded-top"
                     alt="productImage"
-                    style="height: 150px;object-fit: cover;object-position: top center;"
+                    style="height: 350px;object-fit: cover;object-position: top center;"
                   >
                 </router-link>
                 <i class="far fa-heart position-absolute text-light bg-danger rounded p-1" style="right: 5px; top: 5px">新品</i>

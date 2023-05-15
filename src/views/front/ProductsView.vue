@@ -64,7 +64,7 @@
                     :src="product.imageUrl"
                     class="card-img-top rounded-top"
                     alt="productImage"
-                    style="height: 150px;object-fit: cover;object-position: top center;"
+                    style="height: 350px;object-fit: cover;object-position: top center;"
                   >
                 </router-link>
                 <div class="card-body pb-2 d-flex flex-column justify-content-md-between" style="height: 140px;">
@@ -99,7 +99,7 @@
                     :src="product.imageUrl"
                     class="card-img-top rounded-top"
                     alt="productImage"
-                    style="height: 150px;object-fit: cover;object-position: top center;"
+                    style="height: 350px;object-fit: cover;object-position: top center;"
                   >
                 </router-link>
                 <div class="card-body pb-2 d-flex flex-column justify-content-md-between" style="height: 140px;">
